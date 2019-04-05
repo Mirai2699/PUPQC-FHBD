@@ -1,0 +1,143 @@
+CREATE DATABASE fhbd_v1;
+
+CREATE TABLE  r_user_role
+(
+	usr_ID int(10) AUTO_INCREMENT NOT NULL,
+	usr_desc varchar(50) NOT NULL,
+	usr_stat bit(1) NOT NULL,
+	usr_timestamp datetime NOT NULL,
+		Primary key(usr_ID)
+)
+;
+
+CREATE TABLE  r_office
+(
+	office_ID int(10) AUTO_INCREMENT NOT NULL,
+	office_name varchar(50) NOT NULL,
+	office_stat bit(1) NOT NULL,
+	office_timestamp datetime NOT NULL,
+		Primary key(office_ID)
+)
+;
+
+
+CREATE TABLE r_particulars
+(
+	prtclr_ID int(10) AUTO_INCREMENT NOT NULL,
+	prtclr_desc varchar(100) NOT NULL,
+	prtclr_amount decimal(10,2) NOT NULL,
+	prtclr_status varchar(10) DEFAULT "Active" NOT NULL,
+	prtclr_timestamp datetime NOT NULL,
+		Primary key(prtclr_ID) 
+);
+
+CREATE TABLE r_courses
+(
+	course_ID int(10) AUTO_INCREMENT NOT NULL,
+	course_code varchar(10) NOT NULL,
+	course_desc varchar(255) NOT NULL,
+	course_status varchar(10) DEFAULT "Active" NOT NULL,
+	course_timestamp datetime NOT NULL,
+		Primary key(course_ID)
+);
+
+CREATE TABLE t_employees
+(
+	emp_ID int(10) AUTO_INCREMENT NOT NULL,
+	emp_lastname varchar(100) NOT NULL,
+	emp_middlename varchar(100) NULL,
+	emp_firstname varchar(100) NOT NULL,
+	emp_office int(10) NOT NULL,
+	emp_position varchar(50) NOT NULL,
+	emp_picture varchar(255) DEFAULT "default.png" NOT NULL ,
+	emp_active_flag bit(1) DEFAULT 1 NOT NULL,
+		Primary key(emp_ID),
+		CONSTRAINT FK_emp_off FOREIGN KEY (emp_office)
+		        REFERENCES r_office(office_ID)
+)
+;
+
+
+
+CREATE TABLE t_accounts
+(
+	acc_ID int(10) AUTO_INCREMENT NOT NULL,
+	acc_empID int(10) NOT NULL,
+	acc_username varchar(100) NOT NULL,
+	acc_password varchar(100) NOT NULL,
+	acc_user_role int(10) NOT NULL,
+	acc_picture varchar(255) DEFAULT "default.png" NOT NULL ,
+	acc_active_flag bit(1) DEFAULT 1 NOT NULL,
+		Primary key(acc_ID),
+		CONSTRAINT FK_acc_role FOREIGN KEY (acc_user_role)
+    			REFERENCES r_user_role(usr_ID),
+        CONSTRAINT FK_acc_emp FOREIGN KEY (acc_empID)
+    			REFERENCES t_employees(emp_ID)  
+)
+;
+
+CREATE TABLE t_users_log
+(
+	log_No	int(200) AUTO_INCREMENT NOT NULL,
+	log_userID int(10) NOT NULL,
+	log_usertype int(10) NOT NULL,
+	log_datestamp date  NOT NULL,
+	log_timestamp time NOT NULL,
+		Primary key(log_No),
+		CONSTRAINT FK_loguserID FOREIGN KEY (log_userID)
+    			REFERENCES t_accounts(acc_ID) 
+
+)
+;
+
+CREATE TABLE t_student_info
+(
+	stud_ID int(10) AUTO_INCREMENT NOT NULL,
+	stud_number varchar(30) NOT NULL,
+	stud_lref_num varchar(50) NULL,
+	stud_lastname varchar(100) NOT NULL,
+	stud_givenname varchar(100) NOT NULL,
+	stud_middleinit varchar(3) NULL,
+	stud_sex varchar(10) NOT NULL,
+	stud_degree_prog int(10) NOT NULL,
+	stud_year_level varchar(10) NOT NULL,
+	stud_zipcode varchar(10) NULL,
+	stud_email_add varchar(100) NOT NULL,
+	stud_mobile_number varchar(11) NOT NULL,
+	stud_timestamp datetime NOT NULL,
+		Primary key(stud_ID),
+		UNIQUE(stud_number),
+		    CONSTRAINT FK_degree FOREIGN KEY (stud_degree_prog)
+					REFERENCES r_courses(course_ID)  
+
+);
+
+CREATE TABLE t_student_transact
+(
+	strs_ID int(10) AUTO_INCREMENT NOT NULL,
+	strs_stud_num varchar(30) NOT NULL,
+	strs_prtclr_ref int(10) NOT NULL,
+	strs_timestamp datetime NOT NULL,
+		Primary key(strs_ID), 
+		    CONSTRAINT FK_stud_num FOREIGN KEY (strs_stud_num)
+					REFERENCES t_student_info(stud_number),  
+		    CONSTRAINT FK_particular FOREIGN KEY (strs_prtclr_ref)
+		   			REFERENCES r_particulars(prtclr_ID)  
+
+
+);
+
+
+/*Changes and Add tables*/
+
+CREATE TABLE  t_report_bug
+(
+	rb_ID int(10) AUTO_INCREMENT NOT NULL,
+	rb_reporter int(10) NOT NULL,
+	rb_desc varchar(255) NOT NULL,
+	rb_timestamp datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
+		Primary key(rb_ID),
+		CONSTRAINT FK_reporter FOREIGN KEY (rb_reporter)
+				REFERENCES t_accounts(acc_ID)
+)
+;
