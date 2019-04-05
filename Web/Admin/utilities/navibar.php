@@ -102,7 +102,7 @@
                     <span class="menu-title">Users' Logs</span>
                   </a>
                 </li>
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                   <a href="" data-hover="dropdown" class="dropdown-toggle">
                     <i class="fa fa-copy"></i>
                     <span class="menu-title">Reports</span>
@@ -123,7 +123,7 @@
                       </a>
                     </li>
                   </ul>
-                </li>
+                </li> -->
 
 
               </ul>

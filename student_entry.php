@@ -74,8 +74,8 @@
           <section class="main-content" style="background-color: #e6e6e6" >
              <!--START BREADCRUMBS-->
              <div class="col-md-12" style="text-align: center">
-                 <h1 style="margin-top: 5px">FREE HE Billing Form</h1>
-                 <div class="row" style="padding:1px; background-color: #666666; margin-bottom: 10px;"></div> 
+                 <h1 style="margin-top: 5px">FREE Higher Education Billing Form</h1>
+                 <div class="row" style="padding:2px; background-color: #666666; margin-bottom: 10px;"></div> 
              </div>
             <!--END BREADCRUMBS-->
 
@@ -83,10 +83,10 @@
             <!--START FORM CONTENT-->
             <section class="main-content" style="background-color: #e6e6e6;" >
                <form action="Web/functionalities/save_record.php" method="POST">
-                <div class="col-md-8" style="border-radius: 15px; background-color: white; margin-left: 15%">
-                    <div class="col-md-12" style="font-size: 15px">
+                <div class="col-md-11" style="border-radius: 15px; background-color: white; margin-left: 5%">
+                    <div class="col-md-12" style="font-size: 18px">
 
-                        <p style="margin-top: 10px">
+                        <p style="margin-top: 10px; font-size: 20px">
                             <b>Instructions:</b><br>
                             Fill-Out the following fields. Fields marked with " <span style="color: red">*</span> " is required.
                         </p>
@@ -95,33 +95,33 @@
                         <div class="col-md-12" style="margin: 10px">
                             <div class="col-md-6">
                                 <label><b>Student Number:</b></label> &nbsp;<span style="color: red">*</span>
-                                <input id="s_num" type="text" class="form-control" name="stud_num" placeholder="XXXX-XXXXX-XX-X" maxlength="15" required>
+                                <input id="s_num" type="text" class="form-control" name="stud_num" placeholder="XXXX-XXXXX-XX-X" maxlength="15" required style="font-size: 18px">
                             </div>
                             <div class="col-md-6">
                                 <label><b>Learner's Reference Number:</b></label> 
-                                <input id="s_lref_num" type="text" class="form-control" name="stud_lref_num">
+                                <input id="s_lref_num" type="text" class="form-control" name="stud_lref_num" style="font-size: 18px">
                             </div>
                         </div>
                         <!--SECOND LEVEL-->
                         <div class="col-md-12" style="margin: 10px">
                            <div class="col-md-5">
                                <label><b>Last Name:</b></label> &nbsp;<span style="color: red">*</span>
-                               <input id="s_lname" type="text" class="form-control" name="stud_lname" required>
+                               <input id="s_lname" type="text" class="form-control" name="stud_lname" required style="font-size: 18px">
                            </div>
                            <div class="col-md-4">
                                <label><b>Given Name:</b></label> &nbsp;<span style="color: red">*</span>
-                               <input id="s_fname" type="text" class="form-control" name="stud_fname" required>
+                               <input id="s_fname" type="text" class="form-control" name="stud_fname" required style="font-size: 18px">
                            </div>
                            <div class="col-md-3">
                                <label><b>Middle Initial:</b><small>   (Optional)</small></label>
-                               <input id="s_mdinit" type="text" class="form-control" name="stud_mdinit" maxlength="2">
+                               <input id="s_mdinit" type="text" class="form-control" name="stud_mdinit" maxlength="2" style="font-size: 18px">
                            </div>
                         </div>
                         <!--THIRD LEVEL-->
                         <div class="col-md-12" style="margin: 10px">
                             <div class="col-md-3">
                                 <label><b>Sex:</b></label> &nbsp;<span style="color: red">*</span>
-                                <select id="s_sex" class="form-control" name="stud_sex" required>
+                                <select id="s_sex" class="form-control" name="stud_sex" required style="font-size: 18px">
                                     <option value="" selected disabled> -- Select Sex -- </option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -129,7 +129,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label><b>Degree Program:</b></label> &nbsp;<span style="color: red">*</span>
-                                <select id="s_course" class="form-control" name="stud_course">
+                                <select id="s_course" class="form-control" name="stud_course" style="font-size: 18px">
                                     <option value=""> -- Select Degree Program -- </option>
                                     <?php 
                                         $get_course = mysqli_query($connection, "SELECT * FROM `r_courses` WHERE course_status = 'Active'");
@@ -145,7 +145,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label><b>Year-Level:</b></label> &nbsp;<span style="color: red">*</span>
-                                <select id="s_yrlvl" class="form-control" name="stud_yrlvl">
+                                <select id="s_yrlvl" class="form-control" name="stud_yrlvl" style="font-size: 18px">
                                     <option value="" selected disabled> -- Select Year Level -- </option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -153,18 +153,18 @@
                             </div>
                             <div class="col-md-3">
                                 <label><b>Zipcode:</b></label>
-                                <input id="s_zipcode" type="text" class="form-control" name="stud_zipcode">
+                                <input id="s_zipcode" type="text" class="form-control" name="stud_zipcode" style="font-size: 18px">
                             </div>
                         </div>
                         <!--FOURTH LEVEL-->
                         <div class="col-md-12" style="margin: 10px">
                             <div class="col-md-6">
                                 <label><b>Email Address:</b></label> &nbsp;<span style="color: red">*</span>
-                                <input id="s_email" type="email" class="form-control" name="stud_email" >
+                                <input id="s_email" type="email" class="form-control" name="stud_email"  style="font-size: 18px">
                             </div>
                             <div class="col-md-6">
                                 <label><b>Mobile Number:</b></label> &nbsp;<span style="color: red">*</span>
-                                <input id="s_mobnum" type="text" class="form-control" name="stud_mobnum" maxlength="11">
+                                <input id="s_mobnum" type="text" class="form-control" name="stud_mobnum" maxlength="11" style="font-size: 18px">
                             </div>
                         </div>
                         <div class="panel" style="padding: 1px; background-color: #262626"></div>
@@ -178,7 +178,7 @@
                                 &nbsp;
                                 <a class="btn btn-success" href="#confirmation" data-toggle="modal">
                                     <i class="fa fa-mail-forward"></i>
-                                      <b>Submit Entries</b>
+                                      <b style="font-size: 18px">Submit Entries</b>
                                 </a>
                             </div>
                         </div>
