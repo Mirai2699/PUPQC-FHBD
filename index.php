@@ -109,7 +109,7 @@
                                     
                                     if($_SESSION['UserRole'] == "1")
                                     {
-                                      $header ='Location:Web/Admin/views/index.php?username='.$UserName.'';
+                                      $header ='Location:Web/Admin/views/view_today_transact.php?username='.$UserName.'';
                                       header($header);
                                     }
                                     else if($_SESSION['UserRole'] == "2")

@@ -24,7 +24,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="manage_users.php">
+                      <a href="view_past_records.php">
                         <span class="submenu-title">
                           <i class="fa fa-angle-double-right"></i>
                           &nbsp;
@@ -73,7 +73,7 @@
                         <span class="submenu-title">Manage Offices</span>
                       </a>
                     </li>
-                    <li>
+                   <!--  <li>
                       <a href="manage_docu_type.php">
                         <i class="fa fa-angle-double-right"></i>
                           &nbsp;
@@ -93,7 +93,7 @@
                           &nbsp;
                         <span class="submenu-title">Manage Priority Types</span>
                       </a>
-                    </li>
+                    </li> -->
                   </ul>
                 </li>
                 <li class="dropdown">

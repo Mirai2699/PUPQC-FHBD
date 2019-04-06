@@ -16,7 +16,7 @@
           <section class="main-content">
              <!--START BREADCRUMBS-->
              <div class="col-md-12">
-                  <h2 style="margin-top: 15px">Today's Transactions</h2>
+                  <h2 style="margin-top: 15px">Recorded Transactions</h2>
                   <div class="row" style="padding:1px; background-color: #666666; margin-bottom: 10px; width: 100%"></div> 
              </div>
             <!--END BREADCRUMBS-->
@@ -36,6 +36,13 @@
                         <div class="panel-heading" style="background-color: #666666; ">
                           <h4 style="color: white; font-size: 25px">View Student Records</h4>
                           <div class="row" style="padding:1px; background-color:white;"></div>
+                        </div>
+                        <div class="panel">
+
+                             <button type="button" class="btn btn-primary" onclick="print();" style="font-size: 16px; margin-top: 27px;">
+                                <i class="fa fa-print"></i>
+                                Print Report
+                            </button>
                         </div>
                         <br>
                         <!--adv-table start-->
@@ -74,7 +81,6 @@
                                                                           ON STUD.stud_number = TRANSACT.strs_stud_num
                                                                           INNER JOIN `r_particulars` AS PART
                                                                           ON TRANSACT.strs_prtclr_ref = PART.prtclr_ID
-                                                                            WHERE date(stud_timestamp) = '$curdate'
                                                                             GROUP BY STUD.stud_number
                                                                             ORDER BY STUD.stud_ID DESC ");
                                 while($row = mysqli_fetch_assoc($view_query))
@@ -151,14 +157,34 @@
 
           </section>
        </div>
-       <!--END CONTENT-->       
+       <!--END CONTENT-->
+       <?php //include("records_printable.php");?>       
       </div>
       <!--END WRAPPER-->
    </body>
-  <script type="text/javascript">
-    setTimeout(function(){
-      location = ''
-    },15000)
-  </script>
+   <script src="../../../resources/custom/jasonday-printThis-edc43df/printThis.js"></script>
+   <script type="text/javascript">
+     function print()
+     {
+       $('#demo').printThis({
+          debug: false,               // show the iframe for debugging
+          importCSS: true,            // import page CSS
+          importStyle:true,           // import style tags
+          printContainer: true,       // grab outer container as well as the contents of the selector
+          //loadCSS: "",              // path to additional css file - use an array [] for multiple
+          pageTitle: "",              // add title to print page
+          removeInline: false,        // remove all inline styles from print elements
+          printDelay: 333,            // variable print delay
+          header: null,               // prefix to html
+          footer: "Municipal Urban Planning and Development System | © SRG 7TH Generation All Right Reserved ",               // postfix to html
+          base: false ,               // preserve the BASE tag, or accept a string for the URL
+          formValues: true,           // preserve input/form values
+          canvas: false,              // copy canvas elements (experimental)
+          doctypeString: null,        // enter a different doctype for older markup
+          removeScripts: false,       // remove script tags from print content
+          copyTagClasses: false       // copy classes from the html & body tag
+        });
+     }
+   </script>
 </html>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2019 at 10:04 AM
+-- Generation Time: Apr 06, 2019 at 06:37 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -201,7 +201,10 @@ CREATE TABLE `t_student_info` (
 
 INSERT INTO `t_student_info` (`stud_ID`, `stud_number`, `stud_lref_num`, `stud_lastname`, `stud_givenname`, `stud_middleinit`, `stud_sex`, `stud_degree_prog`, `stud_year_level`, `stud_zipcode`, `stud_email_add`, `stud_mobile_number`, `stud_timestamp`) VALUES
 (1, '2015-00193-CM-0', 'n/a', 'Balatbat', 'Cristian', 'O', 'Male', 1, '4', '1121', 'cristianbalatbat@yahoo.com', '09351176022', '2019-04-05 14:51:49'),
-(2, '2015-00004-CM-0', '', 'Maglaque', 'Gerard', '', 'Male', 1, '4', '', 'roard@gmail.com', '09876543211', '2019-04-05 14:54:51');
+(2, '2015-00004-CM-0', '', 'Maglaque', 'Gerard', '', 'Male', 1, '4', '', 'roard@gmail.com', '09876543211', '2019-04-05 14:54:51'),
+(3, '2015-00192-CM-0', '', 'Kuriyama', 'Mirai', '', 'Female', 2, '4', '1121', 'emil@yahoo.com', '09351176022', '2019-04-06 10:09:58'),
+(5, '2015-00010-CM-0', '', 'Alejandria', 'Ma. Michaela', '', 'Female', 1, '4', '1122', 'michaelaalejandria@gmail.com', '09691829182', '2019-04-06 10:24:50'),
+(6, '2015-00073-CM-0', '', 'Loyola', 'John Patrick', 'B', 'Male', 1, '4', '1123', 'loyolajohnpat@yahoo.com', '09871234566', '2019-04-06 10:36:53');
 
 -- --------------------------------------------------------
 
@@ -230,7 +233,27 @@ INSERT INTO `t_student_transact` (`strs_ID`, `strs_stud_num`, `strs_prtclr_ref`,
 (12, '2015-00004-CM-0', 2, '2019-04-05 14:54:51'),
 (13, '2015-00004-CM-0', 3, '2019-04-05 14:54:51'),
 (14, '2015-00004-CM-0', 4, '2019-04-05 14:54:51'),
-(15, '2015-00004-CM-0', 5, '2019-04-05 14:54:51');
+(15, '2015-00004-CM-0', 5, '2019-04-05 14:54:51'),
+(16, '2015-00192-CM-0', 1, '2019-04-06 10:09:58'),
+(17, '2015-00192-CM-0', 2, '2019-04-06 10:09:58'),
+(18, '2015-00192-CM-0', 3, '2019-04-06 10:09:58'),
+(19, '2015-00192-CM-0', 4, '2019-04-06 10:09:58'),
+(20, '2015-00192-CM-0', 5, '2019-04-06 10:09:58'),
+(21, '2015-00193-CM-0', 1, '2019-04-06 10:21:21'),
+(22, '2015-00193-CM-0', 2, '2019-04-06 10:21:22'),
+(23, '2015-00193-CM-0', 3, '2019-04-06 10:21:22'),
+(24, '2015-00193-CM-0', 4, '2019-04-06 10:21:22'),
+(25, '2015-00193-CM-0', 5, '2019-04-06 10:21:22'),
+(26, '2015-00010-CM-0', 1, '2019-04-06 10:24:50'),
+(27, '2015-00010-CM-0', 2, '2019-04-06 10:24:50'),
+(28, '2015-00010-CM-0', 3, '2019-04-06 10:24:51'),
+(29, '2015-00010-CM-0', 4, '2019-04-06 10:24:51'),
+(30, '2015-00010-CM-0', 5, '2019-04-06 10:24:51'),
+(31, '2015-00073-CM-0', 1, '2019-04-06 10:36:53'),
+(32, '2015-00073-CM-0', 2, '2019-04-06 10:36:53'),
+(33, '2015-00073-CM-0', 3, '2019-04-06 10:36:53'),
+(34, '2015-00073-CM-0', 4, '2019-04-06 10:36:53'),
+(35, '2015-00073-CM-0', 5, '2019-04-06 10:36:53');
 
 -- --------------------------------------------------------
 
@@ -252,7 +275,12 @@ CREATE TABLE `t_users_log` (
 
 INSERT INTO `t_users_log` (`log_No`, `log_userID`, `log_usertype`, `log_datestamp`, `log_timestamp`) VALUES
 (1, 1, 1, '2019-04-05', '15:29:47'),
-(2, 1, 1, '2019-04-05', '15:30:56');
+(2, 1, 1, '2019-04-05', '15:30:56'),
+(3, 1, 1, '2019-04-05', '18:32:18'),
+(4, 1, 1, '2019-04-06', '09:54:58'),
+(5, 1, 1, '2019-04-06', '10:33:43'),
+(6, 1, 1, '2019-04-06', '11:00:10'),
+(7, 1, 1, '2019-04-06', '11:47:50');
 
 --
 -- Indexes for dumped tables
@@ -377,19 +405,19 @@ ALTER TABLE `t_report_bug`
 -- AUTO_INCREMENT for table `t_student_info`
 --
 ALTER TABLE `t_student_info`
-  MODIFY `stud_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `stud_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `t_student_transact`
 --
 ALTER TABLE `t_student_transact`
-  MODIFY `strs_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `strs_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `t_users_log`
 --
 ALTER TABLE `t_users_log`
-  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
