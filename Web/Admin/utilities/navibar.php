@@ -2,12 +2,12 @@
           <div class="page-horizontal-sidebar">
             <div id="horizontal-sidebar" class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                <li>
+               <!--  <li>
                   <a href="index.php">
                     <i class="fa fa-dashboard"></i>
                     <span class="menu-title">Dashboard</span>
                   </a>
-                </li>
+                </li> -->
                 <li class="dropdown">
                   <a href="#" data-hover="dropdown" class="dropdown-toggle">
                     <i class="fa fa-book"></i>

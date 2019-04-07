@@ -29,7 +29,7 @@
             <!--START INNER CONTENT-->
 
 
-               <!--START TABLE-->     
+               <!--START TABLE-->      
               <div class="row" style="background-color: white">
                 <div class="col-md-12" style="margin-top: 10px;">
                   <div class="box-info" >
@@ -37,12 +37,13 @@
                           <h4 style="color: white; font-size: 25px">View Student Records</h4>
                           <div class="row" style="padding:1px; background-color:white;"></div>
                         </div>
-                        <div class="panel">
-
-                             <button type="button" class="btn btn-primary" onclick="print();" style="font-size: 16px; margin-top: 27px;">
-                                <i class="fa fa-print"></i>
-                                Print Report
-                            </button>
+                        <div class="panel" style="background-color:#8c8c8c">
+                               <label style="color: white; font-size: 19px; margin-left: 15px">Action Available:</label><br>
+                               <button type="button" class="btn btn-info" onclick="print();" style="font-size: 16px; margin-top: 1px; margin-left: 15px">
+                                  <i class="fa fa-print"></i>
+                                  Print Records
+                               </button>
+                               <div class="row" style="padding: 5px"></div>
                         </div>
                         <br>
                         <!--adv-table start-->
@@ -158,11 +159,11 @@
           </section>
        </div>
        <!--END CONTENT-->
-       <?php //include("records_printable.php");?>       
+       <?php include("records_printable.php");?>       
       </div>
       <!--END WRAPPER-->
    </body>
-   <script src="../../../resources/custom/jasonday-printThis-edc43df/printThis.js"></script>
+   <script src="../../../resources-web/custom/jasonday-printThis-edc43df/printThis.js"></script>
    <script type="text/javascript">
      function print()
      {
@@ -176,7 +177,7 @@
           removeInline: false,        // remove all inline styles from print elements
           printDelay: 333,            // variable print delay
           header: null,               // prefix to html
-          footer: "Municipal Urban Planning and Development System | © SRG 7TH Generation All Right Reserved ",               // postfix to html
+          footer: " ",               // postfix to html
           base: false ,               // preserve the BASE tag, or accept a string for the URL
           formValues: true,           // preserve input/form values
           canvas: false,              // copy canvas elements (experimental)

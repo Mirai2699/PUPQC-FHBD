@@ -1,22 +1,23 @@
 <!-- <link href="../../../resources/custom/print_format.css" media="print" rel="stylesheet" /> -->
 <style type="text/css">
   @page {
-    size:letter;
-    margin-top: 0.7in; 
-    margin-left: 0.7in;
-    margin-right: 0.7in;
+    size:landscape;
+
+    margin-top: 0.5in; 
+    margin-left: 0.5in;
+    margin-right: 0.5in;
     margin-bottom: 0.7in;
    
   }
   hr {
      border: none; 
-     border-bottom: 1px solid black;
+     border-bottom: 2px solid black;
   }
   table {
     border-collapse: collapse;
   }
 
-  table, th, td {
+  .table_custom{
     border: 1px solid black;
   }
 
@@ -29,65 +30,156 @@
      <!--For Details-->
      
      <!--For Details-->
-     <div class="panel" style="font-family: arial;">
+     <div class="panel" style="font-family: times new roman;">
+        <hr>
+        <p style="font-size: 25px; text-align: right">
+          Form 2b
+        </p>
         <p style="font-size: 14px; text-align: center">
            Republic of the Philippines<br>
-           Province of Batangas<br>
-           Municipality of Tuy<br>
+           <i><b>Polytechnic University of the Philippines</b>s</i><br>
+           <i><b>Quezon City Branch</b>s</i><br>
+           <i>Don Fabian St., Brgy. Commonwealth, Quezon City</i><br>
         </p>
-        <p style="font-size: 16px; font-weight:bold; text-align: center; margin-top: 20px; margin-bottom: 40px">OFFICE OF THE DEPUTIZED ZONING ADMINISTRATOR</p>
-        <table>
-          <tr>
-            <td style="width: 480px;border-color: white">
-              Date Created: <?php echo date('F,d Y')?>
-            </td>
-            <td style="width: 380px; text-align: right;border-color: white">
-              Report No: ZAR<?php echo date('Ymd')?>
-            </td>
-          </tr>
-        </table>
-        <hr>
-        <p style="font-size: 19px; font-weight:bold; text-align: center; margin-top: 20px">REPORT ON ZONING APPLICATION</p>
-        <hr>
-
-        <p style="font-size: 16px; text-align: justify">
-          <b>Report Description:</b><br><br>
-           &nbsp;&nbsp;&nbsp;
-           This report contains the details of the zoning applications for applicants that wants to apply for locational clearance in the local municipality.
-           <br>
-           &nbsp;&nbsp;&nbsp;
-           Details in this report may be filtered according to the specifications and preferences set by the report generator.
+        <p style="text-align: center">
+          <h2 style="text-align: center">FREE HE BILLING DETAILS</h2>
         </p>
-         <p style="font-size: 16px; text-align: justify">
-          <b>Table Description:</b><br><br>
-           &nbsp;&nbsp;&nbsp;
-           The table contains the following fields: zoning application number, applicant's name, project location (barangay name), project status, current step of the application
-           and the application date, respectively.
-           <br>
-
-        </p>
-        <table>
-            <thead>
-                <tr>
-                    <th>App No.</th>
-                    <th>Applicant Name</th>
-                    <th>Project Location (Brgy)</th>
-                    <th>Project Status</th>
-                    <th>Current Step</th>
-                    <th>Application Date</th>   
-                </tr>
+        <!--adv-table start-->
+        <div class="adv-table">
+          <center>
+            <table class="table_custom" style="font-size: 13px;">
+            <thead class="table_custom">
+            <tr>
+                <th style="display:none">ID</th>
+                <th class="table_custom">Student<br> Number</th>
+                <th class="table_custom"">Learner's<br> Ref Number</th>
+                <th class="table_custom">Last<br> Name</th>
+                <th class="table_custom">Given<br> Name</th>
+                <th class="table_custom">Middle<br> Initial</th>
+                <th class="table_custom">Sex</th>
+                <!-- <th>Birthdate</th> -->
+                <th class="table_custom">Degree<br> Program</th>
+                <th class="table_custom">Year Level</th>
+                <th class="table_custom">Zipcode</th>
+                <th class="table_custom">Email<br>Address</th>
+                <th class="table_custom">Phone <br>Number</th>
+                <th class="table_custom">Application<br> for<br> Graduation</th>
+                <th class="table_custom">Graduation<br> Fee</th>
+                <th class="table_custom">TOR</th>
+                <th class="table_custom">Diploma</th>
+                <th class="table_custom">Certification <br>of<br> Grades</th>
+                <th class="table_custom">Total <br>OSF</th>
+            </tr>
             </thead>
             <tbody>
-                <?php include("report_zoning_filter_details.php");?>
+            <?php
+                $curdate = date('Y-m-d');
+                $view_query = mysqli_query($connection,"SELECT * FROM `t_student_info` AS STUD
+                                                          INNER JOIN `r_courses` AS CORS 
+                                                          ON STUD.stud_degree_prog = CORS.course_ID
+                                                          INNER JOIN `t_student_transact` AS TRANSACT
+                                                          ON STUD.stud_number = TRANSACT.strs_stud_num
+                                                          INNER JOIN `r_particulars` AS PART
+                                                          ON TRANSACT.strs_prtclr_ref = PART.prtclr_ID
+                                                            GROUP BY STUD.stud_number
+                                                            ORDER BY STUD.stud_ID DESC ");
+                while($row = mysqli_fetch_assoc($view_query))
+                {
+                    $stud_ID = $row['stud_ID'];
+                    $stud_number = $row['stud_number'];
+                    $stud_lref_num = $row['stud_lref_num'];
+                    $stud_lname = $row['stud_lastname'];
+                    $stud_fname = $row['stud_givenname'];
+                    $stud_mdinit = $row['stud_middleinit'];
+                    $stud_sex = $row['stud_sex'];
+                    $stud_course = $row['stud_degree_prog'];
+                    $stud_yrlvl = $row['stud_year_level'];
+                    $stud_zipcode = $row['stud_zipcode'];
+                    $stud_email = $row['stud_email_add'];
+                    $stud_mobnum = $row['stud_mobile_number'];
+                    //course code
+                    $course_code = $row['course_code'];
+
+                    //Transactions
+                    $particular = $row['prtclr_amount'];
+
+                    echo 
+                    '
+                      <tr>
+                        <td style="display:none">'.$stud_ID.'</td>
+                        <td class="table_custom">'.$stud_number.'</td>
+                        <td class="table_custom">'.$stud_lref_num.'</td>
+                        <td class="table_custom">'.$stud_lname.'</td>
+                        <td class="table_custom">'.$stud_fname.'</td> 
+                        <td class="table_custom">'.$stud_mdinit.'</td>
+                        <td class="table_custom">'.$stud_sex.'</td> 
+                        <td class="table_custom">'.$course_code.'</td>
+                        <td class="table_custom">'.$stud_yrlvl.'</td> 
+                        <td class="table_custom">'.$stud_zipcode.'</td>
+                        <td class="table_custom">'.$stud_email.'</td>
+                        <td class="table_custom">'.$stud_mobnum.'</td>
+                    ';
+                    $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
+                    $total_amount = 0;
+                    while($row_part = mysqli_fetch_assoc($get_amount))
+                    {
+                      $part_amount = $row_part['prtclr_amount'];
+                      echo
+                      '
+                        <td class="table_custom">₱ '.$part_amount.'</td>
+                      ';
+
+                       $total_amount = $total_amount + $part_amount;
+                    }
+                   
+                    echo
+                    ' 
+                        <td class="table_custom">₱ '.$total_amount.'</td>
+                      </tr>
+                    ';
+
+
+                } 
+                echo
+                ' <tr>
+                    <td class="table_custom" colspan="17">
+                      <b>OVER-ALL TOTAL - SEGMENT B OF OSF</b>
+                    </td>
+                  </tr>
+                ';
+            ?>
             </tbody>
-        </table>
-        <hr>
+            </table>
+          </center>
+        </div>
+        <!--adv-table end-->
+       
         <br>
-        <p style="font-size: 15px; margin-top:30px; margin-bottom: 20px">
-          Report Generated By:<br><br><br>
-          <b><?php echo $rev_compname; ?></b><br>
-          <i><?php echo $up_pos;?></i>
-        </p>
+        <table>
+          <tbody>
+            <tr>
+              <td style="width: 270px">
+                <div class="col-md-4">
+                  <p style="font-size: 15px; margin-top:30px; margin-bottom: 20px">
+                    Preapred By:<br><br><br><br>
+                    <b>Merly B. Gonzalbo</b><br>
+                    <i>LUC Administrative Staff</i>
+                  </p>
+                </div>
+              </td>
+              <td style="width: 400px">
+                <div class="col-md-4">
+                  <p style="font-size: 15px; margin-top:30px; margin-bottom: 20px">
+                    Reviewed By:<br><br><br><br>
+                    <b>Edgardo S. Delmo</b><br>
+                    <i>Branch Director,PUP Quezon City Branch</i>
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+       
      </div>
      <!-- end panel-body -->
   </div>
