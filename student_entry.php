@@ -95,26 +95,27 @@
                         <div class="col-md-12" style="margin: 10px">
                             <div class="col-md-6">
                                 <label><b>Student Number:</b></label> &nbsp;<span style="color: red">*</span>
-                                <input id="s_num" type="text" class="form-control" name="stud_num" placeholder="XXXX-XXXXX-XX-X" maxlength="15" required style="font-size: 18px">
+                                <input id="s_num" type="text" class="form-control" name="stud_num" placeholder="XXXX-XXXXX-XX-X" maxlength="15" required style="font-size: 18px;text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();">
                             </div>
                             <div class="col-md-6">
-                                <label><b>Learner's Reference Number:</b></label> 
-                                <input id="s_lref_num" type="text" class="form-control" name="stud_lref_num" style="font-size: 18px">
+                                <label><b>Learner's Reference Number:</b><small>   (Optional)</small></label> 
+                                <input id="s_lref_num" type="text" class="form-control" name="stud_lref_num" style="font-size: 18px; text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();">
                             </div>
                         </div>
                         <!--SECOND LEVEL-->
                         <div class="col-md-12" style="margin: 10px">
                            <div class="col-md-5">
                                <label><b>Last Name:</b></label> &nbsp;<span style="color: red">*</span>
-                               <input id="s_lname" type="text" class="form-control" name="stud_lname" required style="font-size: 18px">
+                               <input id="s_lname" type="text" class="form-control" name="stud_lname" required style="font-size: 18px; text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();">
                            </div>
                            <div class="col-md-4">
                                <label><b>Given Name:</b></label> &nbsp;<span style="color: red">*</span>
-                               <input id="s_fname" type="text" class="form-control" name="stud_fname" required style="font-size: 18px">
+                               <input id="s_fname" type="text" class="form-control" name="stud_fname" required style="font-size: 18px; text-transform: uppercase;"onkeyup="this.value = this.value.toUpperCase();">
+                               
                            </div>
                            <div class="col-md-3">
                                <label><b>Middle Initial:</b><small>   (Optional)</small></label>
-                               <input id="s_mdinit" type="text" class="form-control" name="stud_mdinit" maxlength="2" style="font-size: 18px">
+                               <input id="s_mdinit" type="text" class="form-control" name="stud_mdinit" maxlength="2" style="font-size: 18px; text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();">
                            </div>
                         </div>
                         <!--THIRD LEVEL-->
@@ -156,7 +157,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label><b>Zipcode:</b></label>
+                                <label><b>Zipcode:</b><small>   (Optional)</small></label>
                                 <input id="s_zipcode" type="text" class="form-control" name="stud_zipcode" style="font-size: 18px">
                             </div>
                         </div>
@@ -175,7 +176,11 @@
                         <!--FIFTH LEVEL-->
                         <div class="col-md-12" style="margin: 10px; text-align: right">
                             <div class="col-md-12">
+
                               <!--  <button class="btn btn-primary" type="button" onclick="clear();">
+
+                                <!-- <button class="btn btn-primary" type="button" onclick="clear();">
+
                                     <i class="fa fa-refresh"></i>
                                       <b>Clear Entries</b>
                                 </button> -->
@@ -287,11 +292,23 @@
                                     </div>
                                     
                                     <br>
-                                    <p style="font-size: 17px; margin-top: 10px; color: #262626">
+                                    <!-- <p style="font-size: 17px; margin-top: 10px; color: #262626">
                                         Are you sure you want to proceed?
-                                    </p>
+                                    </p> -->
                                     
                                 </div>
+                                <p style="text-align: center; font-size: 13px; color: black">By clicking the submission button, it means that you agree to the terms, conditions and provisionaries of the National Privacy Commission in regards to the compliance to the Data Privacy Act of 2012, in terms of collecting personal and senstitive information.
+                                </p>
+                                
+                                <p style="text-align: center; font-size: 14px; color: black; font-weight: bold">
+                                    For more details, click the button below <i class="fa fa-arrow-down"></i>
+                                    <br>
+                                    <a class="btn btn-info" href="#view_npc" data-toggle="modal" style="background-color: #00264d">
+                                        <i class="fa fa-external-link"></i>&nbsp;
+                                        View DPA Statement in Data Collection
+                                    </a>
+                                </p>
+                               
                                 <div class="panel" style="background-color: #262626; padding: 1px"></div>
                                 <div class="col-md-12" style="text-align: center">
                                     <button class="btn btn-success" style="background-color: green" name="save_record">
@@ -310,6 +327,7 @@
                     </div>
                 </div>
                 <!--END MODAL-->
+                <?php include("get_view_privacy_statement.php");?>
                </form>
             </section>
             <!--END FORM CONTENT-->
@@ -321,9 +339,7 @@
       </div>
       <!--END WRAPPER-->
    </body>
-
-
-
+  
    <script src="resources-web/global/js/jquery.js"></script>
    <script src="resources-web/global/js/jquery-migrate-1.2.1.min.js"></script>
    <script src="resources-web/global/js/jquery-ui.js"></script>
@@ -333,12 +349,18 @@
    <script src="resources-web/global/js/respond.min.js"></script>
    <script src="resources-web/global/plugins/slimScroll/jquery.slimscroll.js"></script>
 
+    <script src="resources-web/custom/masker/jquery.mask.js"></script>
+   <script src="resources-web/custom/masker/jquery.mask.min.js"></script>
+
 
 
 
 
    <script type="text/javascript">
        $(document).ready(function(){
+
+        $('#s_num').mask('0000-00000-AA-0');
+
         $('#btn_submit').on('click',function(){
             // alert('Try');
             $('#lbl_stud_no').text($('#s_num').val());
