@@ -95,26 +95,27 @@
                         <div class="col-md-12" style="margin: 10px">
                             <div class="col-md-6">
                                 <label><b>Student Number:</b></label> &nbsp;<span style="color: red">*</span>
-                                <input id="s_num" type="text" class="form-control" name="stud_num" placeholder="XXXX-XXXXX-XX-X" maxlength="15" required style="font-size: 18px">
+                                <input id="s_num" type="text" class="form-control" name="stud_num" placeholder="XXXX-XXXXX-XX-X" maxlength="15" required style="font-size: 18px;text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();">
                             </div>
                             <div class="col-md-6">
-                                <label><b>Learner's Reference Number:</b></label> 
-                                <input id="s_lref_num" type="text" class="form-control" name="stud_lref_num" style="font-size: 18px">
+                                <label><b>Learner's Reference Number:</b><small>   (Optional)</small></label> 
+                                <input id="s_lref_num" type="text" class="form-control" name="stud_lref_num" style="font-size: 18px; text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();">
                             </div>
                         </div>
                         <!--SECOND LEVEL-->
                         <div class="col-md-12" style="margin: 10px">
                            <div class="col-md-5">
                                <label><b>Last Name:</b></label> &nbsp;<span style="color: red">*</span>
-                               <input id="s_lname" type="text" class="form-control" name="stud_lname" required style="font-size: 18px">
+                               <input id="s_lname" type="text" class="form-control" name="stud_lname" required style="font-size: 18px; text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();">
                            </div>
                            <div class="col-md-4">
                                <label><b>Given Name:</b></label> &nbsp;<span style="color: red">*</span>
-                               <input id="s_fname" type="text" class="form-control" name="stud_fname" required style="font-size: 18px">
+                               <input id="s_fname" type="text" class="form-control" name="stud_fname" required style="font-size: 18px; text-transform: uppercase;"onkeyup="this.value = this.value.toUpperCase();">
+                               
                            </div>
                            <div class="col-md-3">
                                <label><b>Middle Initial:</b><small>   (Optional)</small></label>
-                               <input id="s_mdinit" type="text" class="form-control" name="stud_mdinit" maxlength="2" style="font-size: 18px">
+                               <input id="s_mdinit" type="text" class="form-control" name="stud_mdinit" maxlength="2" style="font-size: 18px; text-transform: uppercase;" onkeyup="this.value = this.value.toUpperCase();">
                            </div>
                         </div>
                         <!--THIRD LEVEL-->
@@ -156,7 +157,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label><b>Zipcode:</b></label>
+                                <label><b>Zipcode:</b><small>   (Optional)</small></label>
                                 <input id="s_zipcode" type="text" class="form-control" name="stud_zipcode" style="font-size: 18px">
                             </div>
                         </div>
@@ -175,10 +176,10 @@
                         <!--FIFTH LEVEL-->
                         <div class="col-md-12" style="margin: 10px; text-align: right">
                             <div class="col-md-12">
-                                <button class="btn btn-primary" type="button" onclick="clear();">
+                                <!-- <button class="btn btn-primary" type="button" onclick="clear();">
                                     <i class="fa fa-refresh"></i>
                                       <b>Clear Entries</b>
-                                </button>
+                                </button> -->
                                 &nbsp;
                                 <a class="btn btn-success" id="btn_submit" href="#confirmation" data-toggle="modal">
                                     <i class="fa fa-mail-forward"></i>
