@@ -58,7 +58,7 @@
                                 <th>Given Name</th>
                                 <th>Middle Initial</th>
                                 <th>Sex</th>
-                                <!-- <th>Birthdate</th> -->
+                                <th>Birthdate</th>
                                 <th>Degree Program</th>
                                 <th>Year Level</th>
                                 <th>Zipcode</th>
@@ -93,6 +93,7 @@
                                     $stud_fname = $row['stud_givenname'];
                                     $stud_mdinit = $row['stud_middleinit'];
                                     $stud_sex = $row['stud_sex'];
+                                    $stud_bday = $row['stud_birthdate'];
                                     $stud_course = $row['stud_degree_prog'];
                                     $stud_yrlvl = $row['stud_year_level'];
                                     $stud_zipcode = $row['stud_zipcode'];
@@ -114,6 +115,7 @@
                                         <td>'.$stud_fname.'</td> 
                                         <td>'.$stud_mdinit.'</td>
                                         <td>'.$stud_sex.'</td> 
+                                        <td>'.$stud_bday.'</td> 
                                         <td>'.$course_code.'</td>
                                         <td>'.$stud_yrlvl.'</td> 
                                         <td>'.$stud_zipcode.'</td>
@@ -127,7 +129,7 @@
                                       $part_amount = $row_part['prtclr_amount'];
                                       echo
                                       '
-                                        <td>₱ '.$part_amount.'</td>
+                                        <td>'.$part_amount.'</td>
                                       ';
 
                                        $total_amount = $total_amount + $part_amount;

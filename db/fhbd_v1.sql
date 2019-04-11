@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2019 at 06:37 AM
+-- Generation Time: Apr 11, 2019 at 08:26 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -66,7 +66,8 @@ CREATE TABLE `r_office` (
 --
 
 INSERT INTO `r_office` (`office_ID`, `office_name`, `office_stat`, `office_timestamp`) VALUES
-(1, 'Cashier\'s Office', b'1', '2019-04-05 00:00:00');
+(1, 'Cashier\'s Office', b'1', '2019-04-05 00:00:00'),
+(2, 'Office of the Branch Director', b'1', '2019-04-11 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -126,6 +127,7 @@ CREATE TABLE `t_accounts` (
   `acc_password` varchar(100) NOT NULL,
   `acc_user_role` int(10) NOT NULL,
   `acc_picture` varchar(255) NOT NULL DEFAULT 'default.png',
+  `acc_mod_date` datetime NOT NULL,
   `acc_active_flag` varchar(10) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -133,8 +135,9 @@ CREATE TABLE `t_accounts` (
 -- Dumping data for table `t_accounts`
 --
 
-INSERT INTO `t_accounts` (`acc_ID`, `acc_empID`, `acc_username`, `acc_password`, `acc_user_role`, `acc_picture`, `acc_active_flag`) VALUES
-(1, 1, 'admin', 'admin', 1, 'default.png', 'Active');
+INSERT INTO `t_accounts` (`acc_ID`, `acc_empID`, `acc_username`, `acc_password`, `acc_user_role`, `acc_picture`, `acc_mod_date`, `acc_active_flag`) VALUES
+(1, 1, 'admin', 'admin', 1, 'default.png', '2019-04-11 11:47:13', 'Active'),
+(2, 2, 'edgardo_delmo', 'delmo', 1, 'default.png', '2019-04-11 00:00:00', 'Active');
 
 -- --------------------------------------------------------
 
@@ -150,6 +153,7 @@ CREATE TABLE `t_employees` (
   `emp_office` int(10) NOT NULL,
   `emp_position` varchar(50) NOT NULL,
   `emp_picture` varchar(255) NOT NULL DEFAULT 'default.png',
+  `emp_signatory` varchar(10) NOT NULL,
   `emp_active_flag` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -157,8 +161,9 @@ CREATE TABLE `t_employees` (
 -- Dumping data for table `t_employees`
 --
 
-INSERT INTO `t_employees` (`emp_ID`, `emp_lastname`, `emp_middlename`, `emp_firstname`, `emp_office`, `emp_position`, `emp_picture`, `emp_active_flag`) VALUES
-(1, 'Gonzalbo', 'B.', 'Merly', 1, 'Administrator', 'default.png', b'1');
+INSERT INTO `t_employees` (`emp_ID`, `emp_lastname`, `emp_middlename`, `emp_firstname`, `emp_office`, `emp_position`, `emp_picture`, `emp_signatory`, `emp_active_flag`) VALUES
+(1, 'Gonzalbo', 'B.', 'Merly', 1, 'SUC Administrative Staff', 'default.png', 'sig1', b'1'),
+(2, 'Delmo', 'S.', 'Edgardo', 2, 'Branch Director', '', 'sig2', b'1');
 
 -- --------------------------------------------------------
 
@@ -187,6 +192,7 @@ CREATE TABLE `t_student_info` (
   `stud_givenname` varchar(100) NOT NULL,
   `stud_middleinit` varchar(3) DEFAULT NULL,
   `stud_sex` varchar(10) NOT NULL,
+  `stud_birthdate` date NOT NULL,
   `stud_degree_prog` int(10) NOT NULL,
   `stud_year_level` varchar(10) NOT NULL,
   `stud_zipcode` varchar(10) DEFAULT NULL,
@@ -199,12 +205,8 @@ CREATE TABLE `t_student_info` (
 -- Dumping data for table `t_student_info`
 --
 
-INSERT INTO `t_student_info` (`stud_ID`, `stud_number`, `stud_lref_num`, `stud_lastname`, `stud_givenname`, `stud_middleinit`, `stud_sex`, `stud_degree_prog`, `stud_year_level`, `stud_zipcode`, `stud_email_add`, `stud_mobile_number`, `stud_timestamp`) VALUES
-(1, '2015-00193-CM-0', 'n/a', 'Balatbat', 'Cristian', 'O', 'Male', 1, '4', '1121', 'cristianbalatbat@yahoo.com', '09351176022', '2019-04-05 14:51:49'),
-(2, '2015-00004-CM-0', '', 'Maglaque', 'Gerard', '', 'Male', 1, '4', '', 'roard@gmail.com', '09876543211', '2019-04-05 14:54:51'),
-(3, '2015-00192-CM-0', '', 'Kuriyama', 'Mirai', '', 'Female', 2, '4', '1121', 'emil@yahoo.com', '09351176022', '2019-04-06 10:09:58'),
-(5, '2015-00010-CM-0', '', 'Alejandria', 'Ma. Michaela', '', 'Female', 1, '4', '1122', 'michaelaalejandria@gmail.com', '09691829182', '2019-04-06 10:24:50'),
-(6, '2015-00073-CM-0', '', 'Loyola', 'John Patrick', 'B', 'Male', 1, '4', '1123', 'loyolajohnpat@yahoo.com', '09871234566', '2019-04-06 10:36:53');
+INSERT INTO `t_student_info` (`stud_ID`, `stud_number`, `stud_lref_num`, `stud_lastname`, `stud_givenname`, `stud_middleinit`, `stud_sex`, `stud_birthdate`, `stud_degree_prog`, `stud_year_level`, `stud_zipcode`, `stud_email_add`, `stud_mobile_number`, `stud_timestamp`) VALUES
+(1, '2015-00193-CM-0', '', 'Balatbat', 'Cristian', 'O', 'Male', '1999-10-26', 1, '4', '', 'cristianbalatbat@yahoo.com', '09351176022', '2019-04-11 14:17:31');
 
 -- --------------------------------------------------------
 
@@ -224,36 +226,11 @@ CREATE TABLE `t_student_transact` (
 --
 
 INSERT INTO `t_student_transact` (`strs_ID`, `strs_stud_num`, `strs_prtclr_ref`, `strs_timestamp`) VALUES
-(6, '2015-00193-CM-0', 1, '2019-04-05 14:51:49'),
-(7, '2015-00193-CM-0', 2, '2019-04-05 14:51:49'),
-(8, '2015-00193-CM-0', 3, '2019-04-05 14:51:49'),
-(9, '2015-00193-CM-0', 4, '2019-04-05 14:51:49'),
-(10, '2015-00193-CM-0', 5, '2019-04-05 14:51:49'),
-(11, '2015-00004-CM-0', 1, '2019-04-05 14:54:51'),
-(12, '2015-00004-CM-0', 2, '2019-04-05 14:54:51'),
-(13, '2015-00004-CM-0', 3, '2019-04-05 14:54:51'),
-(14, '2015-00004-CM-0', 4, '2019-04-05 14:54:51'),
-(15, '2015-00004-CM-0', 5, '2019-04-05 14:54:51'),
-(16, '2015-00192-CM-0', 1, '2019-04-06 10:09:58'),
-(17, '2015-00192-CM-0', 2, '2019-04-06 10:09:58'),
-(18, '2015-00192-CM-0', 3, '2019-04-06 10:09:58'),
-(19, '2015-00192-CM-0', 4, '2019-04-06 10:09:58'),
-(20, '2015-00192-CM-0', 5, '2019-04-06 10:09:58'),
-(21, '2015-00193-CM-0', 1, '2019-04-06 10:21:21'),
-(22, '2015-00193-CM-0', 2, '2019-04-06 10:21:22'),
-(23, '2015-00193-CM-0', 3, '2019-04-06 10:21:22'),
-(24, '2015-00193-CM-0', 4, '2019-04-06 10:21:22'),
-(25, '2015-00193-CM-0', 5, '2019-04-06 10:21:22'),
-(26, '2015-00010-CM-0', 1, '2019-04-06 10:24:50'),
-(27, '2015-00010-CM-0', 2, '2019-04-06 10:24:50'),
-(28, '2015-00010-CM-0', 3, '2019-04-06 10:24:51'),
-(29, '2015-00010-CM-0', 4, '2019-04-06 10:24:51'),
-(30, '2015-00010-CM-0', 5, '2019-04-06 10:24:51'),
-(31, '2015-00073-CM-0', 1, '2019-04-06 10:36:53'),
-(32, '2015-00073-CM-0', 2, '2019-04-06 10:36:53'),
-(33, '2015-00073-CM-0', 3, '2019-04-06 10:36:53'),
-(34, '2015-00073-CM-0', 4, '2019-04-06 10:36:53'),
-(35, '2015-00073-CM-0', 5, '2019-04-06 10:36:53');
+(1, '2015-00193-CM-0', 1, '2019-04-11 14:17:31'),
+(2, '2015-00193-CM-0', 2, '2019-04-11 14:17:32'),
+(3, '2015-00193-CM-0', 3, '2019-04-11 14:17:32'),
+(4, '2015-00193-CM-0', 4, '2019-04-11 14:17:32'),
+(5, '2015-00193-CM-0', 5, '2019-04-11 14:17:32');
 
 -- --------------------------------------------------------
 
@@ -280,7 +257,9 @@ INSERT INTO `t_users_log` (`log_No`, `log_userID`, `log_usertype`, `log_datestam
 (4, 1, 1, '2019-04-06', '09:54:58'),
 (5, 1, 1, '2019-04-06', '10:33:43'),
 (6, 1, 1, '2019-04-06', '11:00:10'),
-(7, 1, 1, '2019-04-06', '11:47:50');
+(7, 1, 1, '2019-04-06', '11:47:50'),
+(8, 1, 1, '2019-04-11', '11:37:34'),
+(9, 1, 1, '2019-04-11', '14:17:39');
 
 --
 -- Indexes for dumped tables
@@ -369,7 +348,7 @@ ALTER TABLE `r_courses`
 -- AUTO_INCREMENT for table `r_office`
 --
 ALTER TABLE `r_office`
-  MODIFY `office_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `office_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `r_particulars`
@@ -387,13 +366,13 @@ ALTER TABLE `r_user_role`
 -- AUTO_INCREMENT for table `t_accounts`
 --
 ALTER TABLE `t_accounts`
-  MODIFY `acc_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `acc_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `t_employees`
 --
 ALTER TABLE `t_employees`
-  MODIFY `emp_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `emp_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `t_report_bug`
@@ -405,19 +384,19 @@ ALTER TABLE `t_report_bug`
 -- AUTO_INCREMENT for table `t_student_info`
 --
 ALTER TABLE `t_student_info`
-  MODIFY `stud_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `stud_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `t_student_transact`
 --
 ALTER TABLE `t_student_transact`
-  MODIFY `strs_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `strs_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `t_users_log`
 --
 ALTER TABLE `t_users_log`
-  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

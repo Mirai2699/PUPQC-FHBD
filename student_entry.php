@@ -119,13 +119,17 @@
                         </div>
                         <!--THIRD LEVEL-->
                         <div class="col-md-12" style="margin: 10px">
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <label><b>Sex:</b></label> &nbsp;<span style="color: red">*</span>
                                 <select id="s_sex" class="form-control" name="stud_sex" required style="font-size: 18px">
                                     <option value="" selected disabled> -- Select Sex -- </option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
+                            </div>
+                             <div class="col-md-2">
+                                <label><b>Birthdate:</b></label> &nbsp;<span style="color: red">*</span>
+                                <input class="form-control" type="date" name="stud_birthdate" required style="font-size: 18px">
                             </div>
                             <div class="col-md-3">
                                 <label><b>Degree Program:</b></label> &nbsp;<span style="color: red">*</span>
@@ -143,7 +147,7 @@
                                     <?php } ?>
                                 </select>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <label><b>Year-Level:</b></label> &nbsp;<span style="color: red">*</span>
                                 <select id="s_yrlvl" class="form-control" name="stud_yrlvl" style="font-size: 18px">
                                     <option value="" selected disabled> -- Select Year Level -- </option>

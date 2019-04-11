@@ -23,6 +23,7 @@
         $stud_lname = $_POST['stud_lname'];
         $stud_fname = $_POST['stud_fname'];
         $stud_sex = $_POST['stud_sex'];
+        $stud_birthdate = $_POST['stud_birthdate'];
         $stud_course = $_POST['stud_course'];
         $stud_yrlvl = $_POST['stud_yrlvl'];
         $stud_email = $_POST['stud_email'];
@@ -60,6 +61,7 @@
                                                stud_givenname,
                                                stud_middleinit,
                                                stud_sex,
+                                               stud_birthdate,
                                                stud_degree_prog,
                                                stud_year_level,
                                                stud_zipcode,
@@ -73,6 +75,7 @@
                                                 '$stud_fname',
                                                 '$stud_mdinit',
                                                 '$stud_sex',
+                                                '$stud_birthdate',
                                                 '$stud_course',
                                                 '$stud_yrlvl',
                                                 '$stud_zipcode',

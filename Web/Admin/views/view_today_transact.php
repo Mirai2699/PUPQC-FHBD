@@ -50,7 +50,7 @@
                                 <th>Given Name</th>
                                 <th>Middle Initial</th>
                                 <th>Sex</th>
-                                <!-- <th>Birthdate</th> -->
+                                <th>Birthdate</th> 
                                 <th>Degree Program</th>
                                 <th>Year Level</th>
                                 <th>Zipcode</th>
@@ -65,7 +65,7 @@
                             </tr>
                             </thead>
                             <tbody id="TableBody">
-                            
+                              
                             </tbody>
                           </table>
                         </div>

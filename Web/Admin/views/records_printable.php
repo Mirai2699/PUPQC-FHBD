@@ -155,15 +155,16 @@
         <!--adv-table end-->
        
         <br>
+        <?php include("get_view_signatories.php"); ?>
         <table>
           <tbody>
             <tr>
               <td style="width: 270px">
                 <div class="col-md-4">
                   <p style="font-size: 15px; margin-top:30px; margin-bottom: 20px">
-                    Preapred By:<br><br><br><br>
-                    <b>Merly B. Gonzalbo</b><br>
-                    <i>LUC Administrative Staff</i>
+                    Prepared By:<br><br><br><br>
+                    <b><?php echo $sig1_compname?></b><br>
+                    <i><?php echo $sig1_pos?></i>
                   </p>
                 </div>
               </td>
@@ -171,8 +172,8 @@
                 <div class="col-md-4">
                   <p style="font-size: 15px; margin-top:30px; margin-bottom: 20px">
                     Reviewed By:<br><br><br><br>
-                    <b>Edgardo S. Delmo</b><br>
-                    <i>Branch Director,PUP Quezon City Branch</i>
+                    <b><?php echo $sig2_compname?></b><br>
+                    <i><?php echo $sig2_pos?>, PUP Quezon City Branch</i>
                   </p>
                 </div>
               </td>
