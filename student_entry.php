@@ -175,10 +175,10 @@
                         <!--FIFTH LEVEL-->
                         <div class="col-md-12" style="margin: 10px; text-align: right">
                             <div class="col-md-12">
-                                <button class="btn btn-primary" type="button" onclick="clear();">
+                              <!--  <button class="btn btn-primary" type="button" onclick="clear();">
                                     <i class="fa fa-refresh"></i>
                                       <b>Clear Entries</b>
-                                </button>
+                                </button> -->
                                 &nbsp;
                                 <a class="btn btn-success" id="btn_submit" href="#confirmation" data-toggle="modal">
                                     <i class="fa fa-mail-forward"></i>
