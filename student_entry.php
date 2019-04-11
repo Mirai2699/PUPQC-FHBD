@@ -129,7 +129,7 @@
                             </div>
                              <div class="col-md-2">
                                 <label><b>Birthdate:</b></label> &nbsp;<span style="color: red">*</span>
-                                <input class="form-control" type="date" name="stud_birthdate" required style="font-size: 18px">
+                                <input id="s_bday" class="form-control" type="date" name="stud_birthdate" required style="font-size: 18px">
                             </div>
                             <div class="col-md-3">
                                 <label><b>Degree Program:</b></label> &nbsp;<span style="color: red">*</span>
@@ -175,12 +175,12 @@
                         <!--FIFTH LEVEL-->
                         <div class="col-md-12" style="margin: 10px; text-align: right">
                             <div class="col-md-12">
-                               <!--  <button class="btn btn-primary" type="button" onclick="clear(); ">
+                                <button class="btn btn-primary" type="button" onclick="clear();">
                                     <i class="fa fa-refresh"></i>
                                       <b>Clear Entries</b>
-                                </button> -->
+                                </button>
                                 &nbsp;
-                                <a class="btn btn-success" href="#confirmation" data-toggle="modal">
+                                <a class="btn btn-success" id="btn_submit" href="#confirmation" data-toggle="modal">
                                     <i class="fa fa-mail-forward"></i>
                                       <b style="font-size: 18px">Submit Entries</b>
                                 </a>
@@ -199,6 +199,7 @@
                             </div>
                             <div class="modal-body" style="height:auto; ">
                                 <div class="col-md-12">
+                                    
                                     <p style="font-size: 17px; margin-bottom: 10px; color: #262626">
                                         After providing your details, these are the particulars to be paid:
                                     </p>
@@ -257,8 +258,39 @@
                                     ?>
                                     <p style="font-size: 17px; margin-top: 10px; color: #262626">
                                         Also, before submitting your entries, make sure that your entries are sufficient and correct. <br>
+                                        These are your entries:
+                                    </p>
+                                    <div class="row" style="border-radius: 15px; border: 1px solid gray">
+
+                                        <div class="col-md-6" style="font-size: 15px; color: black">
+
+                                            <label>Student Number:</label>&nbsp;<label id="lbl_stud_no" style="font-weight: bold"></label><br>
+                                            <label>Learner's <br> Reference Number:</label>&nbsp;<label id="lbl_stud_lref" style="font-weight: bold"></label><br>
+                                            <label>Last Name:</label>&nbsp;<label id="lbl_stud_lname" style="font-weight: bold"></label><br>
+                                            <label>Given Name:</label>&nbsp;<label id="lbl_stud_fname" style="font-weight: bold"></label><br>
+                                            <label>Middle Initial:</label>&nbsp;<label id="lbl_stud_mdinit" style="font-weight: bold"></label><br>
+                                            <label>Sex:</label>&nbsp;<label id="lbl_stud_sex" style="font-weight: bold"></label><br>
+
+                                        </div>
+
+                                        <div class="col-md-6" style="font-size: 15px; color: black">
+
+                                            
+                                            <label>Birthdate:</label>&nbsp;<label id="lbl_stud_bday" style="font-weight: bold"></label><br>
+                                            <label>Degree Program:</label>&nbsp;<label id="lbl_stud_degree" style="font-weight: bold"></label><br>
+                                            <label>Year-Level:</label>&nbsp;<label id="lbl_stud_yrlvl" style="font-weight: bold"></label><br>
+                                            <label>Zipcode:</label>&nbsp;<label id="lbl_stud_zipcode" style="font-weight: bold"></label><br>
+                                            <label>Email:</label>&nbsp;<label id="lbl_stud_email" style="font-weight: bold"></label><br>
+                                            <label>Mobile #:</label>&nbsp;<label id="lbl_stud_mobile" style="font-weight: bold"></label><br>
+
+                                        </div>
+                                    </div>
+                                    
+                                    <br>
+                                    <p style="font-size: 17px; margin-top: 10px; color: #262626">
                                         Are you sure you want to proceed?
                                     </p>
+                                    
                                 </div>
                                 <div class="panel" style="background-color: #262626; padding: 1px"></div>
                                 <div class="col-md-12" style="text-align: center">
@@ -303,13 +335,27 @@
 
 
 
-   <script src="resources-web/assets/plugins/jquery-metisMenu/jquery.menu.min.js"></script>
-   <script src="resources-web/assets/plugins/jquery.blockUI.js"></script>
-   <script src="resources-web/global/js/app.js"></script>
-   <script src="resources-web/assets/js/quick-sidebar.js"></script>
-   <script src="resources-web/assets/js/admin-setting.js"></script>
-   <script src="resources-web/assets/js/layout.js"></script>
 
+
+   <script type="text/javascript">
+       $(document).ready(function(){
+        $('#btn_submit').on('click',function(){
+            // alert('Try');
+            $('#lbl_stud_no').text($('#s_num').val());
+            $('#lbl_stud_lref').text($('#s_lref_num').val());
+            $('#lbl_stud_lname').text($('#s_lname').val());
+            $('#lbl_stud_fname').text($('#s_fname').val());
+            $('#lbl_stud_mdinit').text($('#s_mdinit').val());
+            $('#lbl_stud_sex').text($('#s_sex').val());
+            $('#lbl_stud_bday').text($('#s_bday').val());
+            $('#lbl_stud_degree').text($('#s_course option:selected').text());
+            $('#lbl_stud_yrlvl').text($('#s_yrlvl').val());
+            $('#lbl_stud_zipcode').text($('#s_zipcode').val());
+            $('#lbl_stud_email').text($('#s_email').val());
+            $('#lbl_stud_mobile').text($('#s_mobnum').val());
+        });
+       });
+   </script>
    <script type="text/javascript">
        function clear()
        {  
