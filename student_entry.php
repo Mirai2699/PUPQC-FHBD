@@ -288,11 +288,23 @@
                                     </div>
                                     
                                     <br>
-                                    <p style="font-size: 17px; margin-top: 10px; color: #262626">
+                                    <!-- <p style="font-size: 17px; margin-top: 10px; color: #262626">
                                         Are you sure you want to proceed?
-                                    </p>
+                                    </p> -->
                                     
                                 </div>
+                                <p style="text-align: center; font-size: 13px; color: black">By clicking the submission button, it means that you agree to the terms, conditions and provisionaries of the National Privacy Commission in regards to the compliance to the Data Privacy Act of 2012, in terms of collecting personal and senstitive information.
+                                </p>
+                                
+                                <p style="text-align: center; font-size: 14px; color: black; font-weight: bold">
+                                    For more details, click the button below <i class="fa fa-arrow-down"></i>
+                                    <br>
+                                    <a class="btn btn-info" href="#view_npc" data-toggle="modal" style="background-color: #00264d">
+                                        <i class="fa fa-external-link"></i>&nbsp;
+                                        View DPA Statement in Data Collection
+                                    </a>
+                                </p>
+                               
                                 <div class="panel" style="background-color: #262626; padding: 1px"></div>
                                 <div class="col-md-12" style="text-align: center">
                                     <button class="btn btn-success" style="background-color: green" name="save_record">
@@ -311,6 +323,7 @@
                     </div>
                 </div>
                 <!--END MODAL-->
+                <?php include("get_view_privacy_statement.php");?>
                </form>
             </section>
             <!--END FORM CONTENT-->
@@ -322,9 +335,7 @@
       </div>
       <!--END WRAPPER-->
    </body>
-
-
-
+  
    <script src="resources-web/global/js/jquery.js"></script>
    <script src="resources-web/global/js/jquery-migrate-1.2.1.min.js"></script>
    <script src="resources-web/global/js/jquery-ui.js"></script>
@@ -334,12 +345,18 @@
    <script src="resources-web/global/js/respond.min.js"></script>
    <script src="resources-web/global/plugins/slimScroll/jquery.slimscroll.js"></script>
 
+    <script src="resources-web/custom/masker/jquery.mask.js"></script>
+   <script src="resources-web/custom/masker/jquery.mask.min.js"></script>
+
 
 
 
 
    <script type="text/javascript">
        $(document).ready(function(){
+
+        $('#s_num').mask('0000-00000-AA-0');
+
         $('#btn_submit').on('click',function(){
             // alert('Try');
             $('#lbl_stud_no').text($('#s_num').val());

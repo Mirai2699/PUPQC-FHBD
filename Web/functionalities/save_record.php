@@ -5,8 +5,24 @@
 
       if(isset($_POST['save_record']))
       { 
+          $stud_num = $_POST['stud_num'];
+          $result = substr($stud_num, 0, 4);
+          $stud_alpha = (int)$result;
+
+          if($stud_alpha <= 2014)
+          {
+            echo "<script type=\"text/javascript\">".
+                     "alert
+                     ('Sorry but your student number is below 2015. Your are not entitled for the Higher Education Billing Act.');".
+                    "</script>";
+            echo "<script>setTimeout(\"location.href = '../../student_entry.php';\",0);</script>";
+          }
+          else
+          {
+            save_record();
+          }
           
-          save_record();
+          //save_record();
       }
       else if(isset($_POST['none']))
       { 
