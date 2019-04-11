@@ -47,12 +47,12 @@
         <!--adv-table start-->
         <div class="adv-table">
           <center>
-            <table class="table_custom" style="font-size: 13px;">
+            <table class="table_custom" style="font-size: 11px;">
             <thead class="table_custom">
             <tr>
                 <th style="display:none">ID</th>
                 <th class="table_custom">Student<br> Number</th>
-                <th class="table_custom"">Learner's<br> Ref Number</th>
+                <th class="table_custom">Learner's<br> Ref Number</th>
                 <th class="table_custom">Last<br> Name</th>
                 <th class="table_custom">Given<br> Name</th>
                 <th class="table_custom">Middle<br> Initial</th>
