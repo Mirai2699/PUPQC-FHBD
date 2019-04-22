@@ -157,8 +157,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label><b>Zipcode:</b><small>   (Optional)</small></label>
-                                <input id="s_zipcode" type="text" class="form-control" name="stud_zipcode" style="font-size: 18px">
+                                <label><b>Zipcode:</b></label><span style="color: red">*</span>
+                                <input id="s_zipcode" type="text" class="form-control" name="stud_zipcode" style="font-size: 18px" required>
                             </div>
                         </div>
                         <!--FOURTH LEVEL-->
