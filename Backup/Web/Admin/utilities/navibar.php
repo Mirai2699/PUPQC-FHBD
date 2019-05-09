@@ -15,15 +15,6 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="view_provide_particulars.php">
-                        <span class="submenu-title">
-                          <i class="fa fa-angle-double-right"></i>
-                          &nbsp;
-                          On-Queue Transaction
-                        </span>
-                      </a>
-                    </li>
-                    <li>
                       <a href="view_today_transact.php">
                         <span class="submenu-title">
                           <i class="fa fa-angle-double-right"></i>
@@ -76,20 +67,12 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="manage_particulars.php">
-                        <i class="fa fa-angle-double-right"></i>
-                          &nbsp;
-                        <span class="submenu-title">Manage Particulars</span>
-                      </a>
-                    </li>
-                    <li>
                       <a href="manage_department.php">
                         <i class="fa fa-angle-double-right"></i>
                           &nbsp;
                         <span class="submenu-title">Manage Offices</span>
                       </a>
                     </li>
-
                    <!--  <li>
                       <a href="manage_docu_type.php">
                         <i class="fa fa-angle-double-right"></i>

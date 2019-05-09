@@ -56,18 +56,11 @@
                                 <th>Zipcode</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
-
-                                <?php
-                                    $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
-                                    while($row_part = mysqli_fetch_assoc($get_amount))
-                                    {
-                                      $part_desc = $row_part['prtclr_desc'];
-                                      echo
-                                      '
-                                        <th>'.$part_desc.'</th>
-                                      ';
-                                    }
-                                ?>  
+                                <th>App for Grad</th>
+                                <th>Grad Fee</th>
+                                <th>TOR</th>
+                                <th>Diploma</th>
+                                <th>Certification of Grades</th>
                                 <th>Total OSF</th>
                             </tr>
                             </thead>

@@ -47,51 +47,6 @@
 
       }
 
-      else if(isset($_POST['archive_particular']))
-      { 
-          
-
-          $ID = $_POST["ID"];
-          $archive = "UPDATE r_particulars SET 
-
-                      prtclr_timestamp = CURRENT_TIMESTAMP,
-                      prtclr_status = 'Disabled'
-
-                    WHERE prtclr_ID = '$ID'";
-                
-          mysqli_query($connection,$archive);
-
-           echo "<script type=\"text/javascript\">".
-                    "alert
-                    ('You have successfully disabled the record!');".
-                   "</script>";
-           echo "<script>setTimeout(\"location.href = '../views/manage_particulars.php';\",0);</script>";
-
-      }
-
-
-      else if(isset($_POST['activate_particular']))
-      { 
-          
-
-          $ID = $_POST["ID"];
-          $archive = "UPDATE r_particulars SET 
-
-                      prtclr_timestamp = CURRENT_TIMESTAMP,
-                      prtclr_status = 'Active'
-
-                    WHERE prtclr_ID = '$ID'";
-                
-          mysqli_query($connection,$archive);
-
-           echo "<script type=\"text/javascript\">".
-                    "alert
-                    ('You have successfully activated the record!');".
-                   "</script>";
-           echo "<script>setTimeout(\"location.href = '../views/manage_particulars.php';\",0);</script>";
-
-      }
-
       else if(isset($_POST['archive_docutype']))
       { 
           

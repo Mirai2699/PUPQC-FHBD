@@ -50,33 +50,16 @@
             <td>'.$stud_email.'</td>
             <td>'.$stud_mobnum.'</td>
         ';
-        $get_amount = mysqli_query($connection, "SELECT * FROM `t_student_transact` AS TRANS 
-                                                          INNER JOIn `r_particulars` AS PART
-                                                          ON PART.prtclr_ID = TRANS.strs_prtclr_ref
-                                                            WHERE TRANS.strs_stud_num = '$stud_number'");
+        $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
         $total_amount = 0;
         while($row_part = mysqli_fetch_assoc($get_amount))
         {
           $part_amount = $row_part['prtclr_amount'];
-          $stud_trans_ID = $row_part['strs_prtclr_ref'];
-          $part_ID = $row_part['prtclr_ID'];
-
-          if($stud_trans_ID == $part_ID)
-          {
-            echo
-            '
-              <td>'.$part_amount.'</td>
-            ';
-          }
-          else if($stud_trans_ID != $part_ID)
-          {
-            '
-              <td>NULL</td>
-            ';  
-          }
-         
           echo
-          
+          '
+            <td>'.$part_amount.'</td>
+          ';
+
            $total_amount = $total_amount + $part_amount;
         }
        

@@ -76,33 +76,6 @@
 
       }
 
-      else if(isset($_POST['edit_particular']))
-      { 
-          
-          
-          $part_desc = $_POST['part_desc'];
-          $part_amount = $_POST['part_amount'];
-          $ID = $_POST["ID"];
-
-
-          $update = "UPDATE r_particulars SET 
-
-                      prtclr_desc = '$part_desc',
-                      prtclr_amount = '$part_amount',
-                      prtclr_timestamp = CURRENT_TIMESTAMP
-
-                    WHERE prtclr_ID = '$ID'";
-                
-          mysqli_query($connection,$update);
-
-           echo "<script type=\"text/javascript\">".
-                    "alert
-                    ('You have successfully updated the details!');".
-                   "</script>";
-           echo "<script>setTimeout(\"location.href = '../views/manage_particulars.php';\",0);</script>";
-
-      }
-
       else if(isset($_POST['edit_docutype']))
       { 
           

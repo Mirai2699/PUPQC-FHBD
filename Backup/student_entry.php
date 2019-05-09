@@ -128,9 +128,9 @@
                                     <option value="Female">Female</option>
                                 </select>
                             </div>
-                             <div class="col-md-3">
+                             <div class="col-md-2">
                                 <label><b>Birthdate:</b></label> &nbsp;<span style="color: red">*</span>
-                                <input id="s_bday" class="form-control" type="date" name="stud_birthdate" required style="font-size: 18px" max="<?php echo date('Y-m-d');?>">
+                                <input id="s_bday" class="form-control" type="date" name="stud_birthdate" required style="font-size: 18px">
                             </div>
                             <div class="col-md-3">
                                 <label><b>Degree Program:</b></label> &nbsp;<span style="color: red">*</span>
@@ -156,7 +156,7 @@
                                     <option value="4">4</option>
                                 </select>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <label><b>Zipcode:</b></label><span style="color: red">*</span>
                                 <input id="s_zipcode" type="text" class="form-control" name="stud_zipcode" style="font-size: 18px" required>
                             </div>
@@ -206,10 +206,46 @@
                                 <div class="col-md-12">
                                     
                                     <p style="font-size: 17px; margin-bottom: 10px; color: #262626">
-                                        After providing your details, the CHED will pay the selected graduation particulars for you, in compliance to the Free Higher Education Bill.
+                                        After providing your details, these are the particulars to be paid:
                                     </p>
                                     <hr>
-                                    
+                                    <table style="width: 50%; font-size: 15px; color: black">
+                                        <tbody>
+                                            <?php
+                                                include("db_con.php");
+                                                $view_query = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
+                                                    $total = 0;
+                                                    while($row = mysqli_fetch_array($view_query))
+                                                    {
+                                                        $prtclr_desc = $row['prtclr_desc'];
+                                                        $prtclr_amount = $row['prtclr_amount'];
+
+
+
+                                                        echo 
+                                                        '
+                                                            <tr>
+                                                                <td>'.$prtclr_desc.'</td>
+                                                                <td>₱ '.$prtclr_amount.'</td>
+                                                            </tr>
+                                                        ';
+
+                                                        $total = $total + $prtclr_amount;
+                                                    }
+                                                    echo 
+                                                    '   
+                                                        <tr>
+
+                                                            <td><b>Total:</b></td>
+                                                            <td><b>₱ '.$total.'</b></td>
+                                                        </tr>
+                                                    ';
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                    <hr>
+
+
                                     <?php
                                         include("db_con.php");
                                         $view_query = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
@@ -261,7 +297,7 @@
                                     </p> -->
                                     
                                 </div>
-                                <p style="text-align: center; font-size: 13px; color: black; font-style: italic;">By clicking the submission button, it means that you agree to the terms, conditions and provisionaries of the National Privacy Commission in regards to the compliance to the Data Privacy Act of 2012, in terms of collecting personal and senstitive information.
+                                <p style="text-align: center; font-size: 13px; color: black">By clicking the submission button, it means that you agree to the terms, conditions and provisionaries of the National Privacy Commission in regards to the compliance to the Data Privacy Act of 2012, in terms of collecting personal and senstitive information.
                                 </p>
                                 
                                 <p style="text-align: center; font-size: 14px; color: black; font-weight: bold">

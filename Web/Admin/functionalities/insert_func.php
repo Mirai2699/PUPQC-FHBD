@@ -61,68 +61,37 @@
 
       }
 
-      else if(isset($_POST['add_docu_type']))
+      else if(isset($_POST['add_particular']))
       { 
-          
-          $docu_type = $_POST['docu_type_desc'];
+          add_particular();
+      }
+      function add_particular()
+      {
 
-          $insert = "INSERT INTO r_document_type (docutype_desc 
-                                                  )     
-                                           VALUES ('$docu_type'
-                                                  )";
-                
-          mysqli_query($connection,$insert);
+        include('../../../db_con.php');
 
-           echo "<script type=\"text/javascript\">".
-                    "alert
-                    ('You have successfully added a document type!');".
-                   "</script>";
-           echo "<script>setTimeout(\"location.href = '../views/manage_docu_type.php';\",0);</script>";
+        $part_desc = $_POST['part_desc'];
+        $part_amount = $_POST['part_amount'];
 
+        $insert = "INSERT INTO r_particulars   (prtclr_desc,
+                                                prtclr_amount,
+                                                prtclr_timestamp
+                                                )     
+                                         VALUES ('$part_desc',
+                                                 '$part_amount',
+                                                 CURRENT_TIMESTAMP
+                                                )";
+              
+        mysqli_query($connection,$insert);
+
+         echo "<script type=\"text/javascript\">".
+                  "alert
+                  ('You have successfully added a particular!');".
+                 "</script>";
+         echo "<script>setTimeout(\"location.href = '../views/manage_particulars.php';\",0);</script>";
       }
 
-      else if(isset($_POST['add_src_type']))
-      { 
-          
-          $src_type = $_POST['srctype_desc'];
-
-          $insert = "INSERT INTO r_source_type (source_desc 
-                                                  )     
-                                           VALUES ('$src_type'
-                                                  )";
-                
-          mysqli_query($connection,$insert);
-
-           echo "<script type=\"text/javascript\">".
-                    "alert
-                    ('You have successfully added a source type!');".
-                   "</script>";
-           echo "<script>setTimeout(\"location.href = '../views/manage_source_type.php';\",0);</script>";
-
-      }
-
-      else if(isset($_POST['add_prior_type']))
-      { 
-          
-          $prio_desc = $_POST['prio_desc'];
-          $prio_date_count = $_POST['prio_date_count'];
-
-          $insert = "INSERT INTO r_priority_type (priority_desc,
-                                                  priority_date_count
-                                                  )     
-                                           VALUES ('$prio_desc',
-                                                   '$prio_date_count'
-                                                  )";
-                
-          mysqli_query($connection,$insert);
-
-           echo "<script type=\"text/javascript\">".
-                    "alert
-                    ('You have successfully added a priority type!');".
-                   "</script>";
-           echo "<script>setTimeout(\"location.href = '../views/manage_priority_type.php';\",0);</script>";
-
-      }
+      
 ?>
 
 
