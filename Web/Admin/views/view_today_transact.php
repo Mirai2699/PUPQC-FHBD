@@ -18,6 +18,7 @@
              <div class="col-md-12">
                   <h2 style="margin-top: 15px">Today's Transactions</h2>
                   <div class="row" style="padding:1px; background-color: #666666; margin-bottom: 10px; width: 100%"></div> 
+                  <button name="create_excel" id="create_excel" class="btn btn-success">Create Excel File</button>  
              </div>
             <!--END BREADCRUMBS-->
           <!--  <link type="text/css" rel="stylesheet" href="../../../resources-web/custom/realtime/jquery.dataTables.min.css">
@@ -39,7 +40,7 @@
                         </div>
                         <br>
                         <!--adv-table start-->
-                        <div class="adv-table">
+                        <div id="employee_table" class="adv-table">
                          <table id="datatables" class="table table-striped table-no-border" style="font-size: 12px">
                             <thead>
                             <tr>
@@ -56,7 +57,7 @@
                                 <th>Zipcode</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
-
+ 
                                 <?php
                                     $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
                                     while($row_part = mysqli_fetch_assoc($get_amount))
@@ -98,7 +99,7 @@
       location = ''
     },15000)
   </script> -->
-
+  
   <script type="text/javascript">
     function TableData(){
       $.ajax({
@@ -121,6 +122,16 @@
           TableData();
         },5000);
       });
+
+
+    $(document).ready(function(){
+      $('#create_excel').click(function(){
+          var excel_data = $('#employee_table').html();
+          var page = "../functionalities/excel.php?data=" + excel_data;
+          window.location = page;
+      })
+      });
+
     </script>
 
 </html>
