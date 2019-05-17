@@ -50,11 +50,23 @@
             <td>'.$stud_email.'</td>
             <td>'.$stud_mobnum.'</td>
         ';
-        $get_amount = mysqli_query($connection, "SELECT * FROM `t_student_transact` AS TRANS 
-                                                          INNER JOIn `r_particulars` AS PART
-                                                          ON PART.prtclr_ID = TRANS.strs_prtclr_ref
-                                                            WHERE TRANS.strs_stud_num = '$stud_number'");
+        $get_amount = mysqli_query($connection, "SELECT TRANS.strs_prtclr_ref AS strs_prtclr_ref, PART.prtclr_ID AS prtclr_ID,  PART.prtclr_amount FROM `t_student_transact` AS TRANS 
+                 LEFT JOIN `r_particulars` AS PART
+                 ON PART.prtclr_ID = TRANS.strs_prtclr_ref
+          WHERE TRANS.strs_stud_num = '2015-00075-CM-0'
+          GROUP BY TRANS.strs_prtclr_ref
+          UNION 
+SELECT NULL, prtclr_ID, prtclr_amount FROM `r_particulars` AS PART
+                INNER JOIN `t_student_transact` AS TRANS 
+                     ON PART.prtclr_ID = TRANS.strs_prtclr_ref
+      WHERE prtclr_status = 'Active'
+          and PART.prtclr_ID = TRANS.strs_prtclr_ref
+          ORDER BY prtclr_ID ASC");
         $total_amount = 0;
+        $count_row = mysqli_num_rows($get_amount);
+       
+
+
         while($row_part = mysqli_fetch_assoc($get_amount))
         {
           $part_amount = $row_part['prtclr_amount'];
@@ -68,10 +80,10 @@
               <td>'.$part_amount.'</td>
             ';
           }
-          else if($stud_trans_ID != $part_ID)
+          else if($stud_trans_ID == NULL)
           {
             '
-              <td>NULL</td>
+              <td>'.$count_row.'</td>
             ';  
           }
          
