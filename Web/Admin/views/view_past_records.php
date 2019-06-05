@@ -38,11 +38,21 @@
                           <div class="row" style="padding:1px; background-color:white;"></div>
                         </div>
                         <div class="panel" style="background-color:#8c8c8c">
+
                                <label style="color: white; font-size: 19px; margin-left: 15px">Action Available:</label><br>
-                               <button type="button" class="btn btn-info" onclick="print();" style="font-size: 16px; margin-top: 1px; margin-left: 15px">
-                                  <i class="fa fa-print"></i>
-                                  Print Records
-                               </button>
+                               <form method="POST" action="../functionalities/excel_export_past_record.php">
+                                 <button type="button" class="btn btn-info" onclick="print();" style="font-size: 16px; margin-top: 1px; margin-left: 15px">
+                                    <i class="fa fa-print"></i>
+                                    Print Records
+                                 </button>
+
+                               
+                                 <button class="btn btn-success" type="submit" id="btnExport" name="export" value="Export to Excel" style="font-size: 16px; margin-top: 1px; margin-left: 15px; background-color: green">
+                                    <i class="fa fa-file-excel"></i>
+                                    Export Excel File
+                                 </button>
+                               </form>
+
                                <div class="row" style="padding: 5px"></div>
                         </div>
                         <br>
@@ -64,11 +74,7 @@
                                 <th>Zipcode</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
-                                <th>App for Grad</th>
-                                <th>Grad Fee</th>
-                                <th>TOR</th>
-                                <th>Diploma</th>
-                                <th>Certification of Grades</th>
+                                <th>Particulars</th>
                                 <th>Total OSF</th>
                             </tr>
                             </thead>
@@ -122,22 +128,34 @@
                                         <td>'.$stud_email.'</td>
                                         <td>'.$stud_mobnum.'</td>
                                     ';
-                                    $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
-                                    $total_amount = 0;
-                                    while($row_part = mysqli_fetch_assoc($get_amount))
-                                    {
-                                      $part_amount = $row_part['prtclr_amount'];
-                                      echo
-                                      '
-                                        <td>'.$part_amount.'</td>
-                                      ';
+                                   $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` AS PART 
+                                                                                     INNER JOIN `t_student_transact` AS TRANS 
+                                                                                     ON PART.prtclr_ID = TRANS.strs_prtclr_ref
+                                                                                   WHERE TRANS.strs_stud_num = '$stud_number'");
 
-                                       $total_amount = $total_amount + $part_amount;
-                                    }
+                                   $total_amount = 0;
+                                   $comp_prtclr = '';
+                                   while($row_part = mysqli_fetch_assoc($get_amount))
+                                   {
+                                     $part_amount = $row_part['prtclr_amount'];
+                                     $part_abbrv = $row_part['prtclr_abbrv'];            
+                                     if($comp_prtclr == NULL)
+                                     {
+                                       $coma = '';
+                                     }
+                                     else 
+                                     {
+                                       $coma = ', ';
+                                     }
+
+                                     $total_amount = $total_amount + $part_amount;
+                                     $comp_prtclr = $comp_prtclr.''.$coma.''.$part_abbrv;
+                                   }
                                    
-                                    echo
-                                    ' 
-                                        <td>₱ '.$total_amount.'</td>
+                                   echo
+                                   '   
+                                       <td style="width:10%">'.$comp_prtclr.'</td>
+                                       <td>₱ '.$total_amount.'</td>
                                       </tr>
                                     ';
 

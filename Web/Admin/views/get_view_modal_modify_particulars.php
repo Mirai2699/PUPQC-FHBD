@@ -4,6 +4,7 @@
      {
          $ID = $row["prtclr_ID"];
          $part_desc = $row["prtclr_desc"];
+         $part_abbrv = $row["prtclr_abbrv"];
          $part_amount = $row["prtclr_amount"];
          $part_status = $row["prtclr_status"];
          $part_datestamp = new datetime($row["prtclr_timestamp"]);
@@ -20,15 +21,21 @@
                 <form role="form" method="POST" action="../functionalities/update_func.php">
                     <div class="col-md-12">
                             <input type="hidden" name="ID" value="<?php echo $ID?>" />
-                            <div class="col-md-7">
+                            <div class="col-md-5">
                                 <div class="form-group">
-                                    <label style="font-size: 17px"><b>Particular Description:</b></label>
+                                    <label style="font-size: 17px"><b>Description:</b></label>
                                     <input type="text" class="form-control" name="part_desc" value="<?php echo $part_desc ?>" required/>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label style="font-size: 17px"><b>Particular Amount:</b></label>
+                                    <label style="font-size: 17px"><b>Abbreviation:</b></label>
+                                    <input type="text" class="form-control" name="part_abbrv" value="<?php echo $part_abbrv ?>" required/>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label style="font-size: 17px"><b>Amount:</b></label>
                                     <input type="text" class="form-control" name="part_amount" value="<?php echo $part_amount ?>" required/>
                                 </div>
                             </div>

@@ -81,6 +81,7 @@
           
           
           $part_desc = $_POST['part_desc'];
+          $part_abbrv = $_POST['part_abbrv'];
           $part_amount = $_POST['part_amount'];
           $ID = $_POST["ID"];
 
@@ -88,6 +89,7 @@
           $update = "UPDATE r_particulars SET 
 
                       prtclr_desc = '$part_desc',
+                      prtclr_abbrv = '$part_abbrv',
                       prtclr_amount = '$part_amount',
                       prtclr_timestamp = CURRENT_TIMESTAMP
 

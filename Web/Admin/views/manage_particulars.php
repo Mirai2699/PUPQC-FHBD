@@ -39,6 +39,10 @@
                             <label><b>Particular Description:</b></label>
                             <input type="text" class="form-control" name="part_desc" required/>
                         </div>
+                        <div class="col-md-2">
+                            <label><b>Abbreviation:</b></label>
+                            <input type="text" class="form-control" name="part_abbrv" required/>
+                        </div>
                          <div class="col-md-2">
                             <label><b>Set Amount:</b></label>
                             <input type="number" class="form-control" name="part_amount" min="1.00" step="0.01" required/>
@@ -71,6 +75,7 @@
                             <tr>
                                 <th style="display:none">ID</th>
                                 <th>Description</th>
+                                <th>Abbreviation</th>
                                 <th>Amount</th>
                                 <th>Active Status</th>
                                 <th>Date Modified</th>
@@ -84,6 +89,7 @@
                                 {
                                     $ID = $row["prtclr_ID"];
                                     $part_desc = $row["prtclr_desc"];
+                                    $part_abbrv = $row["prtclr_abbrv"];
                                     $part_amount = $row["prtclr_amount"];
                                     $part_status = $row["prtclr_status"];
                                     $part_datestamp = new datetime($row["prtclr_timestamp"]);
@@ -94,6 +100,7 @@
                                     <tr class="gradeX">
                                         <td style="display: none">'.$ID.'</td>
                                         <td width="">'.$part_desc.'</td>
+                                        <td width="">'.$part_abbrv.'</td>
                                         <td width="">₱ '.$part_amount.'</td>
                                         <td width="">'.$part_status.'</td>
                                         <td width="">'.$nf_datestamp.'</td>

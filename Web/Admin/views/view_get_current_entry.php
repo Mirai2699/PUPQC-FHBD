@@ -170,7 +170,8 @@
                             '   
                              <div style="margin-left: 10px">
                                 <input type="checkbox" name="particular[]" style="width: 30px; height: 20px;" value="'.$prtclr_ID.'" />
-                                <label style="font-size: 17px; font-weight:bold; color: #6e6e6e">'.$prtclr_desc.'</label>
+                                <label style="font-size: 17px; font-weight:bold; color: #6e6e6e">'.$prtclr_desc.'  
+                                - (₱'.$prtclr_amount.')</label>
                              </div>
                                 
                             ';
@@ -205,7 +206,13 @@
                 <i class="fa fa-refresh"></i>
                 Refresh Now
             </a>
-
+            <br>
+            <label style="font-size:20px">Or</label>
+            <br>
+            <a href="view_today_transact.php" style="font-size:18px; margin-bottom: 10px; border-radius: 15px" class="btn btn-success" >
+                <i class="fa fa-arrow-down"></i>
+                View Today\'s Transactions
+            </a>
             <div class="panel" style="background-color:#6e6e6e; padding:1px"></div>
         </div>
         </center>

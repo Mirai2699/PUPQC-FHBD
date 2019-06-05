@@ -14,11 +14,11 @@
       <!--BEGIN CONTENT-->
        <div class="content">
           <section class="main-content">
-             <!--START BREADCRUMBS-->
+             <!--START BREADCRUMBS--> 
              <div class="col-md-12">
                   <h2 style="margin-top: 15px">Today's Transactions</h2>
                   <div class="row" style="padding:1px; background-color: #666666; margin-bottom: 10px; width: 100%"></div> 
-                  <button name="create_excel" id="create_excel" class="btn btn-success">Create Excel File</button>  
+                  <!-- <button name="create_excel" id="create_excel" class="btn btn-success">Create Excel File</button>   -->
              </div>
             <!--END BREADCRUMBS-->
           <!--  <link type="text/css" rel="stylesheet" href="../../../resources-web/custom/realtime/jquery.dataTables.min.css">
@@ -57,8 +57,9 @@
                                 <th>Zipcode</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
+                                <th>Particulars</th>
  
-                                <?php
+                                <!-- <?php
                                     $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
                                     while($row_part = mysqli_fetch_assoc($get_amount))
                                     {
@@ -68,7 +69,7 @@
                                         <th>'.$part_desc.'</th>
                                       ';
                                     }
-                                ?>  
+                                ?>   -->
                                 <th>Total OSF</th>
                             </tr>
                             </thead>

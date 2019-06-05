@@ -71,13 +71,16 @@
         include('../../../db_con.php');
 
         $part_desc = $_POST['part_desc'];
+        $part_abbrv = $_POST['part_abbrv'];
         $part_amount = $_POST['part_amount'];
 
         $insert = "INSERT INTO r_particulars   (prtclr_desc,
+                                                prtclr_abbrv,
                                                 prtclr_amount,
                                                 prtclr_timestamp
                                                 )     
                                          VALUES ('$part_desc',
+                                                 '$part_abbrv',
                                                  '$part_amount',
                                                  CURRENT_TIMESTAMP
                                                 )";

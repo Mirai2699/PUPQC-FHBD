@@ -50,50 +50,33 @@
             <td>'.$stud_email.'</td>
             <td>'.$stud_mobnum.'</td>
         ';
-        $get_amount = mysqli_query($connection, "SELECT TRANS.strs_prtclr_ref AS strs_prtclr_ref, PART.prtclr_ID AS prtclr_ID,  PART.prtclr_amount FROM `t_student_transact` AS TRANS 
-                 LEFT JOIN `r_particulars` AS PART
-                 ON PART.prtclr_ID = TRANS.strs_prtclr_ref
-          WHERE TRANS.strs_stud_num = '2015-00075-CM-0'
-          GROUP BY TRANS.strs_prtclr_ref
-          UNION 
-SELECT NULL, prtclr_ID, prtclr_amount FROM `r_particulars` AS PART
-                INNER JOIN `t_student_transact` AS TRANS 
-                     ON PART.prtclr_ID = TRANS.strs_prtclr_ref
-      WHERE prtclr_status = 'Active'
-          and PART.prtclr_ID = TRANS.strs_prtclr_ref
-          ORDER BY prtclr_ID ASC");
+        $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` AS PART 
+                                                          INNER JOIN `t_student_transact` AS TRANS 
+                                                          ON PART.prtclr_ID = TRANS.strs_prtclr_ref
+                                                        WHERE TRANS.strs_stud_num = '$stud_number'");
+
         $total_amount = 0;
-        $count_row = mysqli_num_rows($get_amount);
-       
-
-
+        $comp_prtclr = '';
         while($row_part = mysqli_fetch_assoc($get_amount))
         {
           $part_amount = $row_part['prtclr_amount'];
-          $stud_trans_ID = $row_part['strs_prtclr_ref'];
-          $part_ID = $row_part['prtclr_ID'];
+          $part_abbrv = $row_part['prtclr_abbrv'];            
+          if($comp_prtclr == NULL)
+          {
+            $coma = '';
+          }
+          else 
+          {
+            $coma = ', ';
+          }
 
-          if($stud_trans_ID == $part_ID)
-          {
-            echo
-            '
-              <td>'.$part_amount.'</td>
-            ';
-          }
-          else if($stud_trans_ID == NULL)
-          {
-            '
-              <td>'.$count_row.'</td>
-            ';  
-          }
-         
-          echo
-          
-           $total_amount = $total_amount + $part_amount;
+          $total_amount = $total_amount + $part_amount;
+          $comp_prtclr = $comp_prtclr.''.$coma.''.$part_abbrv;
         }
        
         echo
-        ' 
+        '   
+            <td style="width:10%">'.$comp_prtclr.'</td>
             <td>₱ '.$total_amount.'</td>
           </tr>
         ';

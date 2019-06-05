@@ -110,6 +110,7 @@
         //FOR TRANSACTION
         $particular = $_POST['particular'];
 
+
         while (list($key,$val) = @each($particular))
         {
             $insert_condition = "INSERT INTO t_student_transact(strs_stud_num,
@@ -217,18 +218,22 @@
         $stud_num = $_POST['stud_num'];
         $particular = $_POST['particular'];
 
+      
         while (list($key,$val) = @each($particular))
         {
-            $insert_condition = "INSERT INTO t_student_transact(strs_stud_num,
-                                                             strs_prtclr_ref,
-                                                             strs_timestamp)
+          $insert_condition = "INSERT INTO t_student_transact(strs_stud_num,
+                                                           strs_prtclr_ref,
+                                                           strs_timestamp)
 
-                                                       VALUES('$stud_num', 
-                                                               '$val', 
-                                                                CURRENT_TIMESTAMP
-                                                               )";
-            mysqli_query($connection,$insert_condition); 
+                                                     VALUES('$stud_num', 
+                                                             '$val', 
+                                                              CURRENT_TIMESTAMP
+                                                             )";
+          mysqli_query($connection,$insert_condition);             
         }
+             
+            
+
          echo "<script type=\"text/javascript\">".
                   "alert
                   ('You have successfully save the student details!');".

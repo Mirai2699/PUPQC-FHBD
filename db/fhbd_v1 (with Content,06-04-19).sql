@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2019 at 04:40 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.2.15
+-- Generation Time: Jun 05, 2019 at 05:37 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -78,6 +78,7 @@ INSERT INTO `r_office` (`office_ID`, `office_name`, `office_stat`, `office_times
 CREATE TABLE `r_particulars` (
   `prtclr_ID` int(10) NOT NULL,
   `prtclr_desc` varchar(100) NOT NULL,
+  `prtclr_abbrv` varchar(30) NOT NULL,
   `prtclr_amount` decimal(10,2) NOT NULL,
   `prtclr_status` varchar(10) NOT NULL DEFAULT 'Active',
   `prtclr_timestamp` datetime NOT NULL
@@ -87,12 +88,12 @@ CREATE TABLE `r_particulars` (
 -- Dumping data for table `r_particulars`
 --
 
-INSERT INTO `r_particulars` (`prtclr_ID`, `prtclr_desc`, `prtclr_amount`, `prtclr_status`, `prtclr_timestamp`) VALUES
-(1, 'Application for Graduation', '150.00', 'Active', '2019-04-05 00:00:00'),
-(2, 'Graduation Fee', '600.00', 'Active', '2019-04-05 00:00:00'),
-(3, 'Transcript of Records', '350.00', 'Active', '2019-04-05 00:00:00'),
-(4, 'Diploma', '200.00', 'Active', '2019-04-05 00:00:00'),
-(5, 'Certification of Grades', '150.00', 'Active', '2019-04-05 00:00:00');
+INSERT INTO `r_particulars` (`prtclr_ID`, `prtclr_desc`, `prtclr_abbrv`, `prtclr_amount`, `prtclr_status`, `prtclr_timestamp`) VALUES
+(1, 'Application for Graduation', 'App for Grad', '150.00', 'Active', '2019-04-05 00:00:00'),
+(2, 'Graduation Fee', 'Grad Fee', '600.00', 'Active', '2019-04-05 00:00:00'),
+(3, 'Transcript of Records', 'TOR', '350.00', 'Active', '2019-04-05 00:00:00'),
+(4, 'Diploma', 'Diploma', '200.00', 'Active', '2019-04-05 00:00:00'),
+(5, 'Certification of Grades', 'CTC', '150.00', 'Active', '2019-04-05 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -305,7 +306,7 @@ INSERT INTO `t_student_info` (`stud_ID`, `stud_number`, `stud_lref_num`, `stud_l
 (97, '2015-00228-CM-0', '', 'BERNAL', 'KEITH FRANCH', 'D', 'Female', '1997-07-30', 1, '4', '1118', 'keithfranch@gmail.com', '09391836158', '2019-04-12 13:23:30', 'APPROVED'),
 (98, '2015-00625-CM-0', '', 'LIZADA', 'ANGELIKA', '', 'Female', '1998-09-16', 3, '4', '1127', 'angelkalizada2@gmail.com', '09155053536', '2019-04-12 13:25:41', 'APPROVED'),
 (99, '2015-00045-CM-0', '', 'CAMPO', 'MARY GRACE', 'C', 'Female', '1999-02-13', 3, '4', '1127', 'gracemin130@gmail.com', '09563721487', '2019-04-12 13:27:06', 'APPROVED'),
-(100, '2015-00667', 'CM-0', 'ALMACIN', 'AIRA', 'D', 'Female', '1999-02-15', 4, '4', '', 'aira_almacin@yahoo.com', '09217052913', '2019-04-12 13:32:11', 'APPROVED'),
+(100, '2015-00667-CM-0', NULL, 'ALMACIN', 'AIRA', 'D', 'Female', '1999-02-15', 4, '4', '', 'aira_almacin@yahoo.com', '09217052913', '2019-04-12 13:32:11', 'APPROVED'),
 (101, '2015-00260-CM-0', '', 'CORDERO ', 'JEFF ANDREI', 'A', 'Male', '1998-09-17', 3, '4', '', 'jeffcordero17@yahoo.com', '09753318682', '2019-04-12 13:43:22', 'APPROVED'),
 (102, '2015-00129-CM-0', '', 'DE GUZMAN', 'CLARISSA LANE', 'C', 'Female', '1998-02-10', 3, '4', '1102', 'clcdeguzman10@gmail.com', '09952000105', '2019-04-12 13:47:32', 'APPROVED'),
 (103, '2015-00218-CM-0', '', 'ROMERO', 'MIKKA', 'L.', 'Female', '1998-01-27', 3, '4', '1860', 'mikkaromero123@gmail.com', '09289564362', '2019-04-12 14:16:48', 'APPROVED'),
@@ -1040,11 +1041,11 @@ INSERT INTO `t_student_transact` (`strs_ID`, `strs_stud_num`, `strs_prtclr_ref`,
 (493, '2015-00045-CM-0', 3, '2019-04-12 13:27:06'),
 (494, '2015-00045-CM-0', 4, '2019-04-12 13:27:06'),
 (495, '2015-00045-CM-0', 5, '2019-04-12 13:27:06'),
-(496, '2015-00667', 1, '2019-04-12 13:32:11'),
-(497, '2015-00667', 2, '2019-04-12 13:32:11'),
-(498, '2015-00667', 3, '2019-04-12 13:32:11'),
-(499, '2015-00667', 4, '2019-04-12 13:32:11'),
-(500, '2015-00667', 5, '2019-04-12 13:32:11'),
+(496, '2015-00667-CM-0', 1, '2019-04-12 13:32:11'),
+(497, '2015-00667-CM-0', 2, '2019-04-12 13:32:11'),
+(498, '2015-00667-CM-0', 3, '2019-04-12 13:32:11'),
+(499, '2015-00667-CM-0', 4, '2019-04-12 13:32:11'),
+(500, '2015-00667-CM-0', 5, '2019-04-12 13:32:11'),
 (501, '2015-00260-CM-0', 1, '2019-04-12 13:43:22'),
 (502, '2015-00260-CM-0', 2, '2019-04-12 13:43:22'),
 (503, '2015-00260-CM-0', 3, '2019-04-12 13:43:22'),
@@ -1548,9 +1549,9 @@ INSERT INTO `t_student_transact` (`strs_ID`, `strs_stud_num`, `strs_prtclr_ref`,
 (1006, '2015-00057-CM-0', 1, '2019-04-15 16:39:23'),
 (1007, '2015-00057-CM-0', 2, '2019-04-15 16:39:23'),
 (1008, '2015-00057-CM-0', 3, '2019-04-15 16:39:23'),
-(1009, '2015-00057-CM-0', 4, '2019-04-15 16:39:23'),
-(1010, '2015-00057-CM-0', 5, '2019-04-15 16:39:23');
+(1009, '2015-00057-CM-0', 4, '2019-04-15 16:39:23');
 INSERT INTO `t_student_transact` (`strs_ID`, `strs_stud_num`, `strs_prtclr_ref`, `strs_timestamp`) VALUES
+(1010, '2015-00057-CM-0', 5, '2019-04-15 16:39:23'),
 (1011, '2015-00275-CM-0', 1, '2019-04-15 16:42:13'),
 (1012, '2015-00275-CM-0', 2, '2019-04-15 16:42:13'),
 (1013, '2015-00275-CM-0', 3, '2019-04-15 16:42:13'),
@@ -2246,7 +2247,8 @@ INSERT INTO `t_users_log` (`log_No`, `log_userID`, `log_usertype`, `log_datestam
 (28, 1, 1, '2019-04-30', '14:52:42'),
 (29, 1, 1, '2019-05-04', '14:24:03'),
 (30, 1, 1, '2019-05-08', '13:36:37'),
-(31, 1, 1, '2019-05-10', '10:33:59');
+(31, 1, 1, '2019-05-10', '10:33:59'),
+(32, 1, 1, '2019-06-04', '11:07:13');
 
 --
 -- Indexes for dumped tables
@@ -2383,7 +2385,7 @@ ALTER TABLE `t_student_transact`
 -- AUTO_INCREMENT for table `t_users_log`
 --
 ALTER TABLE `t_users_log`
-  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables

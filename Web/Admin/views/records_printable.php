@@ -63,11 +63,7 @@
                 <th class="table_custom">Zipcode</th>
                 <th class="table_custom">Email<br>Address</th>
                 <th class="table_custom">Phone <br>Number</th>
-                <th class="table_custom">Application<br> for<br> Graduation</th>
-                <th class="table_custom">Graduation<br> Fee</th>
-                <th class="table_custom">TOR</th>
-                <th class="table_custom">Diploma</th>
-                <th class="table_custom">Certification <br>of<br> Grades</th>
+                <th class="table_custom">Particulars</th>
                 <th class="table_custom">Total <br>OSF</th>
             </tr>
             </thead>
@@ -119,21 +115,33 @@
                         <td class="table_custom">'.$stud_email.'</td>
                         <td class="table_custom">'.$stud_mobnum.'</td>
                     ';
-                    $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` WHERE prtclr_status = 'Active'");
-                    $total_amount = 0;
-                    while($row_part = mysqli_fetch_assoc($get_amount))
-                    {
-                      $part_amount = $row_part['prtclr_amount'];
-                      echo
-                      '
-                        <td class="table_custom">₱ '.$part_amount.'</td>
-                      ';
+                     $get_amount = mysqli_query($connection, "SELECT * FROM `r_particulars` AS PART 
+                                                                       INNER JOIN `t_student_transact` AS TRANS 
+                                                                       ON PART.prtclr_ID = TRANS.strs_prtclr_ref
+                                                                     WHERE TRANS.strs_stud_num = '$stud_number'");
+
+                     $total_amount = 0;
+                     $comp_prtclr = '';
+                     while($row_part = mysqli_fetch_assoc($get_amount))
+                     {
+                       $part_amount = $row_part['prtclr_amount'];
+                       $part_abbrv = $row_part['prtclr_abbrv'];            
+                       if($comp_prtclr == NULL)
+                       {
+                         $coma = '';
+                       }
+                       else 
+                       {
+                         $coma = ', ';
+                       }
 
                        $total_amount = $total_amount + $part_amount;
-                    }
-                   
-                    echo
-                    ' 
+                       $comp_prtclr = $comp_prtclr.''.$coma.''.$part_abbrv;
+                     }
+                     
+                     echo
+                     '   
+                        <td class="table_custom">'.$comp_prtclr.'</td>
                         <td class="table_custom">₱ '.$total_amount.'</td>
                       </tr>
                     ';

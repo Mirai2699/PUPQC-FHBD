@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2019 at 01:30 AM
+-- Generation Time: Jun 05, 2019 at 05:32 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -78,6 +78,7 @@ INSERT INTO `r_office` (`office_ID`, `office_name`, `office_stat`, `office_times
 CREATE TABLE `r_particulars` (
   `prtclr_ID` int(10) NOT NULL,
   `prtclr_desc` varchar(100) NOT NULL,
+  `prtclr_abbrv` varchar(30) DEFAULT NULL,
   `prtclr_amount` decimal(10,2) NOT NULL,
   `prtclr_status` varchar(10) NOT NULL DEFAULT 'Active',
   `prtclr_timestamp` datetime NOT NULL
@@ -87,13 +88,14 @@ CREATE TABLE `r_particulars` (
 -- Dumping data for table `r_particulars`
 --
 
-INSERT INTO `r_particulars` (`prtclr_ID`, `prtclr_desc`, `prtclr_amount`, `prtclr_status`, `prtclr_timestamp`) VALUES
-(1, 'Application for Graduation', '150.00', 'Active', '2019-05-08 20:45:52'),
-(2, 'Graduation Fee', '600.00', 'Active', '2019-05-08 20:45:45'),
-(3, 'Transcript of Records', '350.00', 'Active', '2019-05-08 18:52:11'),
-(4, 'Diploma', '200.00', 'Active', '2019-04-05 00:00:00'),
-(5, 'Certification of Grades', '150.00', 'Active', '2019-04-05 00:00:00'),
-(6, 'NBI Clearance', '170.00', 'Disabled', '2019-05-08 20:46:01');
+INSERT INTO `r_particulars` (`prtclr_ID`, `prtclr_desc`, `prtclr_abbrv`, `prtclr_amount`, `prtclr_status`, `prtclr_timestamp`) VALUES
+(1, 'Application for Graduation', 'App for Grad', '150.00', 'Active', '2019-06-05 22:45:58'),
+(2, 'Graduation Fee', 'Grad Fee', '600.00', 'Active', '2019-06-05 22:46:23'),
+(3, 'Transcript of Records', 'TOR', '350.00', 'Active', '2019-06-05 22:46:09'),
+(4, 'Diploma', 'Diploma', '200.00', 'Active', '2019-06-05 22:46:35'),
+(5, 'Certification of Grades', 'CTC ', '150.00', 'Active', '2019-06-05 22:47:04'),
+(6, 'NBI Clearance', 'NBI', '170.00', 'Disabled', '2019-06-05 22:47:17'),
+(7, 'Alumni Fee', 'Alm Fee', '500.00', 'Disabled', '2019-06-05 22:49:42');
 
 -- --------------------------------------------------------
 
@@ -203,14 +205,6 @@ CREATE TABLE `t_student_info` (
   `stud_timestamp` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `t_student_info`
---
-
-INSERT INTO `t_student_info` (`stud_ID`, `stud_number`, `stud_lref_num`, `stud_lastname`, `stud_givenname`, `stud_middleinit`, `stud_sex`, `stud_birthdate`, `stud_degree_prog`, `stud_year_level`, `stud_zipcode`, `stud_email_add`, `stud_mobile_number`, `stud_transact_stat`, `stud_timestamp`) VALUES
-(1, '2015-00193-CM-0', '', 'BALATBAT', 'CRISTIAN', 'O', 'Male', '1999-10-26', 1, '4', '1121', 'cristianbalatbat@yahoo.com', '09967742086', 'APPROVED', '2019-05-08 20:47:14'),
-(2, '2015-00007-CM-0', '', 'MAGLAQUE', 'GERARD', 'O', 'Male', '1999-07-15', 1, '4', '1321', 'stirlessearth@gmail.com', '09876543211', 'APPROVED', '2019-05-08 20:48:19');
-
 -- --------------------------------------------------------
 
 --
@@ -223,20 +217,6 @@ CREATE TABLE `t_student_transact` (
   `strs_prtclr_ref` int(10) NOT NULL,
   `strs_timestamp` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `t_student_transact`
---
-
-INSERT INTO `t_student_transact` (`strs_ID`, `strs_stud_num`, `strs_prtclr_ref`, `strs_timestamp`) VALUES
-(1, '2015-00193-CM-0', 1, '2019-05-08 20:48:31'),
-(2, '2015-00193-CM-0', 2, '2019-05-08 20:48:31'),
-(3, '2015-00193-CM-0', 3, '2019-05-08 20:48:31'),
-(4, '2015-00193-CM-0', 4, '2019-05-08 20:48:31'),
-(5, '2015-00193-CM-0', 5, '2019-05-08 20:48:31'),
-(6, '2015-00007-CM-0', 1, '2019-05-08 20:48:36'),
-(7, '2015-00007-CM-0', 3, '2019-05-08 20:48:36'),
-(8, '2015-00007-CM-0', 5, '2019-05-08 20:48:36');
 
 -- --------------------------------------------------------
 
@@ -251,41 +231,6 @@ CREATE TABLE `t_users_log` (
   `log_datestamp` date NOT NULL,
   `log_timestamp` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `t_users_log`
---
-
-INSERT INTO `t_users_log` (`log_No`, `log_userID`, `log_usertype`, `log_datestamp`, `log_timestamp`) VALUES
-(1, 1, 1, '2019-04-05', '15:29:47'),
-(2, 1, 1, '2019-04-05', '15:30:56'),
-(3, 1, 1, '2019-04-05', '18:32:18'),
-(4, 1, 1, '2019-04-06', '09:54:58'),
-(5, 1, 1, '2019-04-06', '10:33:43'),
-(6, 1, 1, '2019-04-06', '11:00:10'),
-(7, 1, 1, '2019-04-06', '11:47:50'),
-(8, 1, 1, '2019-04-11', '11:37:34'),
-(9, 1, 1, '2019-04-11', '14:17:39'),
-(10, 1, 1, '2019-04-11', '15:20:40'),
-(11, 1, 1, '2019-04-11', '15:21:13'),
-(12, 1, 1, '2019-04-11', '16:08:50'),
-(13, 1, 1, '2019-04-11', '16:15:36'),
-(14, 1, 1, '2019-04-11', '17:39:31'),
-(15, 1, 1, '2019-04-11', '17:44:24'),
-(16, 1, 1, '2019-04-12', '08:38:52'),
-(17, 1, 1, '2019-04-12', '14:16:14'),
-(18, 1, 1, '2019-04-13', '09:58:49'),
-(19, 1, 1, '2019-04-15', '09:58:26'),
-(20, 1, 1, '2019-04-15', '11:10:22'),
-(21, 1, 1, '2019-04-15', '11:26:26'),
-(22, 1, 1, '2019-04-15', '13:40:01'),
-(23, 1, 1, '2019-04-16', '10:43:19'),
-(24, 1, 1, '2019-04-22', '09:24:19'),
-(25, 1, 1, '2019-04-24', '11:11:28'),
-(26, 1, 1, '2019-04-25', '10:48:10'),
-(27, 1, 1, '2019-04-26', '09:13:17'),
-(28, 1, 1, '2019-04-30', '14:52:42'),
-(29, 1, 1, '2019-05-08', '18:38:13');
 
 --
 -- Indexes for dumped tables
@@ -380,7 +325,7 @@ ALTER TABLE `r_office`
 -- AUTO_INCREMENT for table `r_particulars`
 --
 ALTER TABLE `r_particulars`
-  MODIFY `prtclr_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `prtclr_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `r_user_role`
@@ -410,19 +355,19 @@ ALTER TABLE `t_report_bug`
 -- AUTO_INCREMENT for table `t_student_info`
 --
 ALTER TABLE `t_student_info`
-  MODIFY `stud_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `stud_ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `t_student_transact`
 --
 ALTER TABLE `t_student_transact`
-  MODIFY `strs_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `strs_ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `t_users_log`
 --
 ALTER TABLE `t_users_log`
-  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
