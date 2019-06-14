@@ -2,11 +2,13 @@
   include('../../../db_con.php');
 
     $curdate = date('Y-m-d');
+	$get_stud_id=$_GET['stud_id'];
     $view_query = mysqli_query($connection,"SELECT * FROM `t_student_info` AS STUD
                                               INNER JOIN `r_courses` AS CORS 
                                               ON STUD.stud_degree_prog = CORS.course_ID
                                                 WHERE date(stud_timestamp) = '$curdate'
                                                 and stud_transact_stat = 'PENDING'
+												and stud_ID=$get_stud_id
                                                 ORDER BY STUD.stud_ID ASC 
                                                 LIMIT 1");
     if(mysqli_num_rows($view_query) > 0)

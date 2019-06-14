@@ -8,7 +8,7 @@
 
 
 ?>    
-       <title>PUPQC-FHBD | On-Queue Transactions</title>
+       <title>PUPQC-FHBD |Transaction</title>
       <!--BEGIN WRAPPER-->
       <div class="wrapper row-offcanvas row-offcanvas-left">
       <!--BEGIN CONTENT-->
@@ -16,7 +16,7 @@
           <section class="main-content">
              <!--START BREADCRUMBS-->
              <div class="col-md-12">
-                  <h2 style="margin-top: 15px">On-Queue Transaction</h2>
+                  <h2 style="margin-top: 15px">Student Transaction</h2>
                   <div class="row" style="padding:1px; background-color: #666666; margin-bottom: 10px; width: 100%"></div> 
              </div>
             <!--END BREADCRUMBS-->
@@ -33,45 +33,12 @@
               <div class="row" style="background-color: white">
                 <div class="col-md-12" style="margin-top: 10px;">
                   <div class="box-info" >
-                        <div class="panel-heading" style="background-color: #666666; ">
-                          <h4 style="color: white; font-size: 25px">View On-Queue List</h4>
-                          <div class="row" style="padding:1px; background-color:white;"></div>
-                        </div>
-                        <br>
-							
-						<button  class="btn btn-success" value="Refresh Page" onClick="window.location.reload();"> Refresh</button>
-						
-					
-						<button class="btn btn-warning" onclick="window.location.href='view_today_transact.php'">Today's Trasactions</button>
-
-						<br>
-						<br>
-
+                       
                         <!--adv-table start-->
-					
-                        <div id="adv-table" class="adv-table">
-                         <table id="datatables" class="table table-striped table-no-border" style="font-size: 12px">
-                            <thead>
-                            <tr>
-                                <th style="display:none">ID</th>
-                                <th>Student Number</th>
-                                <th>Learner's Ref Number</th>
-                                <th>Last Name</th>
-                                <th>Given Name</th>
-                                <th>Middle Initial</th>
-								 <th>Actions</th>
-                               
- 
-                               
-                            </tr>
-                            </thead>
-                            <tbody id="TableBody">
-                              
-                            </tbody>
-                          </table>
+                        <div id="TableBody">
+                          
                         </div>
                         <!--adv-table end-->
-                        
                   </div>
                 </div>
               </div>    
@@ -92,18 +59,14 @@
       location = ''
     },15000)
   </script> -->
- <!--  <script type="text/javascript">
-    setTimeout(function(){
-      location = ''
-    },15000)
-  </script> -->
 
   <script type="text/javascript">
     function TableData(){
       $.ajax({
-            url:'view_get_current_que.php',
+            url:'view_get_current_entry.php',
             type:'GET',
-            async:true,
+            async:false,
+			data:{'stud_id':<?php echo $_GET['stud_id'];?>},
             success:function(data){
               $('#TableBody').empty();
               $('#TableBody').html(data);
@@ -114,17 +77,56 @@
           });
     }
 
-
-      $(document).ready(function(){
+    $(document).ready(function(){
       TableData();
-        setInterval(function(){
-          TableData();
-        },2000);
+        // setInterval(function(){
+        //   TableData();
+        // },3000);
       });
 
 
 
+    function changedetails() {
 
+        $("#stud_number").prop("readonly", false);
+        $("#stud_lref_num").prop("readonly", false);
+        $("#stud_lname").prop("readonly", false);
+        $("#stud_fname").prop("readonly", false);
+        $("#stud_mdint").prop("readonly", false);
+        $("#stud_yrlvl").prop("readonly", false);
+        $("#stud_course").prop("readonly", false);
+        $("#stud_bday").prop("readonly", false);
+        $("#stud_sex").prop("readonly", false);
+        $("#stud_mobnum").prop("readonly", false);
+        $("#stud_email").prop("readonly", false);
+        $("#stud_zipcode").prop("readonly", false);
+
+        $("#btn-change").hide();
+        $("#btn-save").show();
+        $("#btn-cancel").show();
+
+      }
+
+  function cancelchange() {
+
+      $("#stud_number").prop("readonly", true);
+      $("#stud_lref_num").prop("readonly", true);
+      $("#stud_lname").prop("readonly", true);
+      $("#stud_fname").prop("readonly", true);
+      $("#stud_mdint").prop("readonly", true);
+      $("#stud_yrlvl").prop("readonly", true);
+      $("#stud_course").prop("readonly", true);
+      $("#stud_bday").prop("readonly", true);
+      $("#stud_sex").prop("readonly", true);
+      $("#stud_mobnum").prop("readonly", true);
+      $("#stud_email").prop("readonly", true);
+      $("#stud_zipcode").prop("readonly", true);
+
+      $("#btn-change").show();
+      $("#btn-save").hide();
+      $("#btn-cancel").hide();
+
+    }
     </script>
 
 </html>
